@@ -16,7 +16,7 @@ class CreateDefinitionsTable extends Migration
         Schema::create('definitions', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('definition');
+            $table->text('definition');
         });
     }
 

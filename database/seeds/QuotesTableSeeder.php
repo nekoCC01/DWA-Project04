@@ -12,9 +12,24 @@ class QuotesTableSeeder extends Seeder {
 	public function run() {
 		$quotes = [
 			[
-				'He who begins by loving Christianity better than Truth will proceed by loving his own sect or church better than Christianity, and end by loving himself better than all.',
+				'Let us weigh the gain and the loss in wagering that God is. Let us estimate these two chances. If you gain, you gain all; if you lose, you lose nothing. Wager, then, without hesitation that He is.',
 				'English',
 				'Religion'
+			],
+			[
+				'I believe, therefore I understand.',
+				'English',
+				'Religion'
+			],
+			[
+				'Perhaps the simplest and most important point about ethics is purely logical. I mean the impossibility to derive non-tautological ethical rules … from statements of facts.',
+				'English',
+				'Ethics'
+			],
+			[
+				'Behold! human beings living in an underground den... Like ourselves... they see only their own shadows, ro the shadows of one antoher, which the fire throws on the opposite wall of the cave.',
+				'English',
+				'Knowledge'
 			]
 		];
 
