@@ -14,7 +14,7 @@ class ArgumentsTableSeeder extends Seeder {
 			[
 				'Pascals wager',
 				'If we choose to believe and are right, we win eternal bliss. If we are wrong, we lose little. If we choose not to believe and are right we cannot win anything.',
-				'Much to gain, little to lose - on should bet on Gods existence.'
+				'Much to gain, little to lose - on should bet one Gods existence.'
 			],
 			[
 				'Hume´s guillotine',
