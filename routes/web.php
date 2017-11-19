@@ -43,3 +43,25 @@ Route::get('/debug', function () {
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+/*
+ * Quotes
+ */
+Route::get('/quote/all', 'QuoteController@all');
+Route::get('/quote/single', 'QuoteController@single');
+
+/*
+ * Concepts
+ */
+Route::get('/concept/all', 'ConceptController@all');
+Route::get('/concept/single', 'ConceptController@single');
+
+/*
+ * Arguments
+ */
+Route::get('/argument/all', 'ArgumentController@all');
+Route::get('/argument/single', 'ArgumentController@single');
+
+
+
