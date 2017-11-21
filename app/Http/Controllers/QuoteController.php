@@ -10,12 +10,12 @@ class QuoteController extends Controller
 
 	public function all()
 	{
-		return 'quote all';
+		return view('quote.all');
 	}
 
 	public function single()
 	{
-		return 'quote single';
+		return view('quote.single');
 	}
 
 

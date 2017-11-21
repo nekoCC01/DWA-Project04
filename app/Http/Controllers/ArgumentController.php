@@ -8,12 +8,12 @@ class ArgumentController extends Controller
 {
 	public function all()
 	{
-		return 'argument all';
+		return view('argument.all');
 	}
 
 	public function single()
 	{
-		return 'argument single';
+		return view('argument.all');
 	}
 
 }

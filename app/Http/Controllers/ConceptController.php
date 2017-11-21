@@ -8,11 +8,11 @@ class ConceptController extends Controller
 {
 	public function all()
 	{
-		return 'concept all';
+		return view('concept.all');
 	}
 
 	public function single()
 	{
-		return 'concept single';
+		view('concept.single');
 	}
 }
