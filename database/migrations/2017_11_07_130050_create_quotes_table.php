@@ -19,6 +19,11 @@ class CreateQuotesTable extends Migration
             $table->text('quote');
             $table->string('language');
             $table->string('category');
+	        $table->integer('philosopher_id')->unsigned();
+        });
+
+        Schema::table('quotes', function(Blueprint $table){
+	        $table->foreign('philosopher_id')->references('id')->on('philosophers');
         });
     }
 

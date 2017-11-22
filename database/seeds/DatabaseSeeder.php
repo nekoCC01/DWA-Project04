@@ -10,11 +10,11 @@ class DatabaseSeeder extends Seeder {
 	 */
 	public function run() {
 		$this->call( [
+			PhilosophersTableSeeder::class,
 			QuotesTableSeeder::class,
 			ConceptsTableSeeder::class,
 			DefinitionsTableSeeder::class,
 			ArgumentsTableSeeder::class,
-			PhilosophersTableSeeder::class,
 			WorksTableSeeder::class
 		] );
 	}
