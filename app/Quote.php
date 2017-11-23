@@ -10,4 +10,9 @@ class Quote extends Model
 	{
 		return $this->belongsTo('App\Philosopher');
 	}
+
+	public function concepts()
+	{
+		return $this->belongsToMany('App\Concept');
+	}
 }

@@ -20,6 +20,8 @@ class QuoteController extends Controller
 		$quote = Quote::find(1);
 		echo $quote->philosopher->name;
 
+		dump($quote->concepts);
+
 		$quotes = Philosopher::find(8)->quotes;
 		dump($quotes);
 
