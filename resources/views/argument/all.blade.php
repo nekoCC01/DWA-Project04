@@ -1,10 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>DWA-Project 04</title>
-</head>
-<body>
-<h1>argument all</h1>
-</body>
-</html>
+@extends('layouts.master')
+
+
+@section('title')
+    Quote all
+@endsection
+
+
+@push('head')
+
+@endpush
+
+@section('featured_content')
+
+@endsection
+
+@section('content')
+    <div class="container all_content">
+
+        <div class="row">
+            <figure class="figure">
+                <blockquote>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                    labore et dolore magna aliquyam erat,
+                    sed diam voluptua. At vero eos et accusam et
+                </blockquote>
+                <figcaption class="figure-caption">
+                    Plato Augustinus Kant
+                </figcaption>
+            </figure>
+            <a href="/argument/single">Link</a>
+            <hr>
+            <figure class="figure">
+                <blockquote>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                    labore et dolore magna aliquyam erat,
+                    sed diam voluptua. At vero eos et accusam et
+                </blockquote>
+                <figcaption class="figure-caption">
+                    Plato Augustinus Kant
+                </figcaption>
+            </figure>
+            <hr>
+            <figure class="figure">
+                <blockquote>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                    labore et dolore magna aliquyam erat,
+                    sed diam voluptua. At vero eos et accusam et
+                </blockquote>
+                <figcaption class="figure-caption">
+                    Plato Augustinus Kant
+                </figcaption>
+            </figure>
+
+        </div>
+
+    </div>
+
+@endsection
+
+
+@push('body')
+    <script type="text/javascript">
+        $('.nav-item').removeClass('active');
+        $('#arguments').addClass('active');
+    </script>
+@endpush

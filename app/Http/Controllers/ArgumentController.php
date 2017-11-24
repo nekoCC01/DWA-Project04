@@ -10,15 +10,17 @@ class ArgumentController extends Controller
 {
 	public function all()
 	{
+		/*
 		$argument = Argument::find(3);
 		dump($argument->concepts);
+		*/
 
 		return view('argument.all');
 	}
 
 	public function single()
 	{
-		return view('argument.all');
+		return view('argument.single');
 	}
 
 }

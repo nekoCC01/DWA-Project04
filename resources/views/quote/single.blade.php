@@ -21,6 +21,9 @@
     <div class="container-fluid concepts">
         <div class="container">
             <div class="row">
+                <h3>Related concepts</h3>
+            </div>
+            <div class="row">
                 <span class="badge badge-secondary">New</span>
                 <span class="badge badge-secondary">New</span>
                 <span class="badge badge-secondary">New</span>
