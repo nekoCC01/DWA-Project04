@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>DWA-Project 04</title>
-</head>
-<body>
-<h1>DWA-Project 04</h1>
-</body>
-</html>
+@extends('layouts.master')
+
+@push('head')
+
+@endpush
+
+
+@section('featured_content')
+
+    <p>A Random Quote</p>
+
+@endsection
+
+
+
+
+@section('content')
+
+    <div class="container">
+        <div class="row text-center">
+            Welcome to the web of thoughts
+        </div>
+    </div>
+
+@endsection

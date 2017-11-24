@@ -15,7 +15,7 @@ class QuoteController extends Controller
 		/*
 		$quotes = Quote::where('category','Religion')->get();
 		dump($quotes);
-		*/
+
 
 		$quote = Quote::find(1);
 		echo $quote->philosopher->name;
@@ -24,6 +24,8 @@ class QuoteController extends Controller
 
 		$quotes = Philosopher::find(8)->quotes;
 		dump($quotes);
+
+		*/
 
 		return view('quote.all');
 	}
