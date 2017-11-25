@@ -46,8 +46,11 @@ class QuoteController extends Controller {
 	}
 
 	public function single($quote_id) {
+
+		$selected_quote = Quote::find($quote_id);
+
 		return view( 'quote.single' )->with([
-			'quote_id' => $quote_id
+			'selected_quote' => $selected_quote
 		]);
 	}
 
