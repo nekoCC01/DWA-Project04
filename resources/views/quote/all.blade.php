@@ -35,14 +35,14 @@
             @foreach($quotes as $quote)
 
                 <a href="/quote/single">
-                <figure class="figure">
-                    <blockquote>
-                        {{$quote->quote}}
-                    </blockquote>
-                    <figcaption class="figure-caption">
-                        {{$quote->philosopher->name}}
-                    </figcaption>
-                </figure>
+                    <figure class="figure">
+                        <blockquote>
+                            {{$quote->quote}}
+                        </blockquote>
+                        <figcaption class="figure-caption">
+                            {{$quote->philosopher->name}}
+                        </figcaption>
+                    </figure>
                 </a>
                 <hr>
 

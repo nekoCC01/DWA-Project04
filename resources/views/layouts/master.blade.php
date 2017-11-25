@@ -15,39 +15,39 @@
 </head>
 <body>
 
-<a href="/">
-    <header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-            <img src="/img/Logo.png" alt="">
-            <a class="navbar-brand" href="/">Web of thoughts</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-                    aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active" id="home">
-                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item" id="quotes">
-                        <a class="nav-link" href="/quote/all">Quotes <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item" id="concepts">
-                        <a class="nav-link" href="/concept/all">Concepts <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item" id="arguments">
-                        <a class="nav-link" href="/argument/all">Arguments <span class="sr-only">(current)</span></a>
-                    </li>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <div class="container-fluid" id="youarehere">
-            Current position
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+        <img src="/img/Logo.png" alt="">
+        <a class="navbar-brand" href="/">Web of thoughts</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active" id="home">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item" id="quotes">
+                    <a class="nav-link" href="/quote/all">Quotes <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item" id="concepts">
+                    <a class="nav-link" href="/concept/all">Concepts <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item" id="arguments">
+                    <a class="nav-link" href="/argument/all">Arguments <span class="sr-only">(current)</span></a>
+                </li>
+                </li>
+            </ul>
         </div>
-    </header>
-</a>
+    </nav>
+    <div class="container-fluid" id="youarehere">
+        Current position
+    </div>
+</header>
+
 
 <main role="main">
 
@@ -58,10 +58,7 @@
     </div>
 
 
-
-
     @yield('content')
-
 
 
 </main>
