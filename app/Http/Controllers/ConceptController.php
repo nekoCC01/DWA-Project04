@@ -14,11 +14,19 @@ class ConceptController extends Controller
 		$concept = Concept::find(1);
 		dump($concept->arguments);
 		*/
-		return view('concept.all');
+
+
+		$concepts = Concept::all();
+
+		return view('concept.all')->with([
+			'concepts' => $concepts
+		]);
 	}
 
-	public function single()
+	public function single($concept_id)
 	{
-		return view('concept.single');
+		return view('concept.single')->with([
+			'concept_id' => $concept_id
+		]);
 	}
 }

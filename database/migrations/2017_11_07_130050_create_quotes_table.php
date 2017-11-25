@@ -20,10 +20,12 @@ class CreateQuotesTable extends Migration
             $table->string('language');
             $table->string('category');
 	        $table->integer('philosopher_id')->unsigned();
+	        $table->integer('work_id')->unsigned()->nullable();
         });
 
         Schema::table('quotes', function(Blueprint $table){
 	        $table->foreign('philosopher_id')->references('id')->on('philosophers');
+	        $table->foreign('work_id')->references('id')->on('works');
         });
     }
 

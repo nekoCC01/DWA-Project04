@@ -42,11 +42,11 @@ class QuotesTableSeeder extends Seeder {
 
 		foreach ( $quotes as $key => $quote ) {
 			Quote::insert( [
-				'created_at' => Carbon\Carbon::now()->subDays( $count )->toDateTimeString(),
-				'updated_at' => Carbon\Carbon::now()->subDays( $count )->toDateTimeString(),
-				'quote'      => $quote[0],
-				'language'   => $quote[1],
-				'category'   => $quote[2],
+				'created_at'     => Carbon\Carbon::now()->subDays( $count )->toDateTimeString(),
+				'updated_at'     => Carbon\Carbon::now()->subDays( $count )->toDateTimeString(),
+				'quote'          => $quote[0],
+				'language'       => $quote[1],
+				'category'       => $quote[2],
 				'philosopher_id' => $quote[3]
 			] );
 			$count --;

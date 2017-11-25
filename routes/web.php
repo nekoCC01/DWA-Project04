@@ -53,7 +53,7 @@ Route::get('/quote/single/{quote_id}', 'QuoteController@single');
  * Concepts
  */
 Route::get('/concept/all', 'ConceptController@all');
-Route::get('/concept/single', 'ConceptController@single');
+Route::get('/concept/single/{concept_id}', 'ConceptController@single');
 
 /*
  * Arguments

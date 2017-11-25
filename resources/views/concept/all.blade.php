@@ -22,9 +22,10 @@
                 <h3>All concepts</h3>
             </div>
             <div class="row">
-                <a href="/concept/single"><span class="badge badge-secondary">New</span></a>
-                <span class="badge badge-secondary">New</span>
-                <span class="badge badge-secondary">New</span>
+
+                @foreach($concepts as $concept)
+                    <a href="/concept/single/{{$concept->id}}"><span class="badge badge-secondary">{{$concept->concept}}</span></a>
+                @endforeach
             </div>
         </div>
     </div>

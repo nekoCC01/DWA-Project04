@@ -15,7 +15,7 @@
     <div class="container-fluid concepts">
         <div class="container">
             <div class="row">
-                <h3><span class="badge badge-secondary">Concept</span></h3>
+                <h3><span class="badge badge-secondary">Concept = {{$concept_id}}</span></h3>
             </div>
             <div class="row">
                 Definitions:

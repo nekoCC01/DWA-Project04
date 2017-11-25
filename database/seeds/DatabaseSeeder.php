@@ -15,7 +15,8 @@ class DatabaseSeeder extends Seeder {
 			ConceptsTableSeeder::class,
 			DefinitionsTableSeeder::class,
 			ArgumentsTableSeeder::class,
-			WorksTableSeeder::class
+			WorksTableSeeder::class,
+			ArgumentConceptTableSeeder::class
 		] );
 	}
 }

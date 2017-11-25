@@ -46,6 +46,14 @@ class PhilosophersTableSeeder extends Seeder {
 			[
 				'René Descartes',
 				'Q9191'
+			],
+			[
+				'John Calvin',
+				'Q37577'
+			],
+			[
+				'Linda Elder',
+				'Q20011916'
 			]
 		];
 

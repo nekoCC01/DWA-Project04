@@ -51,7 +51,4 @@ class QuoteController extends Controller {
 		]);
 	}
 
-
-
-
 }
