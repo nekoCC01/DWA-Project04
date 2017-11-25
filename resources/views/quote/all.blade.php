@@ -12,7 +12,16 @@
 
 @section('featured_content')
 
-    <p>A Random Quote</p>
+    <figure class="figure">
+        <blockquote>
+            {{$random_quote->quote}}
+        </blockquote>
+        <figcaption class="figure-caption">
+            {{$random_quote->philosopher->name}}
+        </figcaption>
+    </figure>
+    <a href="/quote/single">Link</a>
+
     <p><a class="btn btn-primary btn-sm" href="#" role="button">Another Random &raquo;</a></p>
 
 @endsection
@@ -21,39 +30,23 @@
     <div class="container all_content">
 
         <div class="row">
-            <figure class="figure">
-                <blockquote>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                    labore et dolore magna aliquyam erat,
-                    sed diam voluptua. At vero eos et accusam et
-                </blockquote>
-                <figcaption class="figure-caption">
-                    Plato Augustinus Kant
-                </figcaption>
-            </figure>
-            <a href="/quote/single">Link</a>
-            <hr>
-            <figure class="figure">
-                <blockquote>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                    labore et dolore magna aliquyam erat,
-                    sed diam voluptua. At vero eos et accusam et
-                </blockquote>
-                <figcaption class="figure-caption">
-                    Plato Augustinus Kant
-                </figcaption>
-            </figure>
-            <hr>
-            <figure class="figure">
-                <blockquote>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                    labore et dolore magna aliquyam erat,
-                    sed diam voluptua. At vero eos et accusam et
-                </blockquote>
-                <figcaption class="figure-caption">
-                    Plato Augustinus Kant
-                </figcaption>
-            </figure>
+
+
+            @foreach($quotes as $quote)
+
+                <a href="/quote/single">
+                <figure class="figure">
+                    <blockquote>
+                        {{$quote->quote}}
+                    </blockquote>
+                    <figcaption class="figure-caption">
+                        {{$quote->philosopher->name}}
+                    </figcaption>
+                </figure>
+                </a>
+                <hr>
+
+            @endforeach
 
         </div>
 

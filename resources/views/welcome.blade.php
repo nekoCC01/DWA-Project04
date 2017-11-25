@@ -7,11 +7,16 @@
 
 @section('featured_content')
 
-    <p>A Random Quote</p>
+    <figure class="figure">
+        <blockquote>
+            {{$random_quote->quote}}
+        </blockquote>
+        <figcaption class="figure-caption">
+            {{$random_quote->philosopher->name}}
+        </figcaption>
+    </figure>
 
 @endsection
-
-
 
 
 @section('content')

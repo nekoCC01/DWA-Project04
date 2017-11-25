@@ -6,12 +6,10 @@ use Illuminate\Http\Request;
 use App\Quote;
 use App\Philosopher;
 
-class QuoteController extends Controller
-{
+class QuoteController extends Controller {
 
 
-	public function all()
-	{
+	public function all() {
 		/*
 		$quotes = Quote::where('category','Religion')->get();
 		dump($quotes);
@@ -27,13 +25,34 @@ class QuoteController extends Controller
 
 		*/
 
-		return view('quote.all');
+		$quotes = Quote::all();
+		$random_quote = $quotes->random();
+
+		return view( 'quote.all' )->with( [
+			'quotes'       => $quotes,
+			'random_quote' => $random_quote
+		] );
+
 	}
 
-	public function single()
+	public function welcome()
 	{
-		return view('quote.single');
+		$quotes = Quote::all();
+		$random_quote = $quotes->random();
+
+		return view( 'welcome' )->with( [
+			'random_quote' => $random_quote
+		] );
+
+
 	}
+
+
+	public function single() {
+		return view( 'quote.single' );
+	}
+
+
 
 
 }
