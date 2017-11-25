@@ -18,8 +18,9 @@
 
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-        <img src="/img/Logo.png" alt="">
-        <a class="navbar-brand" href="/">Web of thoughts</a>
+        <a class="navbar-brand" href="/">
+            <img src="/img/Logo.png" alt="">
+            Web of thoughts</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
                 aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -38,7 +39,6 @@
                 </li>
                 <li class="nav-item" id="arguments">
                     <a class="nav-link" href="/argument/all">Arguments <span class="sr-only">(current)</span></a>
-                </li>
                 </li>
             </ul>
         </div>

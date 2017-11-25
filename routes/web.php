@@ -47,7 +47,7 @@ Route::get('/', 'QuoteController@welcome');
  * Quotes
  */
 Route::get('/quote/all', 'QuoteController@all');
-Route::get('/quote/single', 'QuoteController@single');
+Route::get('/quote/single/{quote_id}', 'QuoteController@single');
 
 /*
  * Concepts

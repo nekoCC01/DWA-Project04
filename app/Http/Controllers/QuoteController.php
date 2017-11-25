@@ -43,13 +43,12 @@ class QuoteController extends Controller {
 		return view( 'welcome' )->with( [
 			'random_quote' => $random_quote
 		] );
-
-
 	}
 
-
-	public function single() {
-		return view( 'quote.single' );
+	public function single($quote_id) {
+		return view( 'quote.single' )->with([
+			'quote_id' => $quote_id
+		]);
 	}
 
 

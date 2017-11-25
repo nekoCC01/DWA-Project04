@@ -39,7 +39,7 @@ Adjustments to page elements & sections
 #youarehere, footer {
     background-color: #9B4612;
     color: white;
-    padding: 5px;
+    padding: 15px 10px 5px 10px;
 }
 
 
@@ -71,4 +71,8 @@ Custom classes
 }
 .all_content {
     margin-top: 25px;
+}
+
+.quote_link * {
+    color: black;
 }

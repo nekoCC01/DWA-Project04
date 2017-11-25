@@ -12,7 +12,7 @@
 
 @section('featured_content')
 
-    <p>The selected Quote</p>
+    <p>The selected Quote = {{$quote_id}}</p>
 
 @endsection
 
