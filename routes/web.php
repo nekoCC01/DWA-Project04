@@ -46,7 +46,13 @@ Route::get('/', 'QuoteController@welcome');
 /*
  * Quotes
  */
+
+# Create a quote
+Route::get('/quote/create', 'QuoteController@create');
+Route::post('/quote', 'QuoteController@store');
+# View all quotes
 Route::get('/quote/all', 'QuoteController@all');
+# View a single quote
 Route::get('/quote/single/{quote_id}', 'QuoteController@single');
 
 /*

@@ -29,8 +29,10 @@
 @section('content')
     <div class="container all_content">
 
-        <div class="row">
 
+        <a href="/quote/create">Add new quote</a>
+
+        <div class="row">
 
             @foreach($quotes as $quote)
 

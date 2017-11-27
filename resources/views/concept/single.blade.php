@@ -70,7 +70,7 @@
                                 {{$related_argument->philosopher->name}}
                             </figcaption>
                         </figure>
-                        <a href="/quote/argument/{{$related_argument->id}}">Link</a>
+                        <a href="/argument/single/{{$related_argument->id}}">Link</a>
                         <hr>
                     @endforeach
 

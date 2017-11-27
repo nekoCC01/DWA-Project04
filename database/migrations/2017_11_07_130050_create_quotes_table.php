@@ -18,7 +18,6 @@ class CreateQuotesTable extends Migration
             $table->timestamps();
             $table->text('quote');
             $table->string('language');
-            $table->string('category');
 	        $table->integer('philosopher_id')->unsigned();
 	        $table->integer('work_id')->unsigned()->nullable();
         });
