@@ -13,19 +13,28 @@ class WorksTableSeeder extends Seeder {
 		$works = [
 			[
 				'Pensées',
-				'Q17360856'
+				'Q17360856',
+				9
 			],
 			[
 				'A Treatise of Human Nature',
-				'Q2451675'
+				'Q2451675',
+				5
 			],
 			[
 				'The Republic',
-				'Q123397'
+				'Q123397',
+				8
 			],
 			[
 				'Meditations',
-				''
+				'',
+				9
+			],
+			[
+				'Institutes',
+				'Q371558',
+				10
 			]
 		];
 
@@ -36,7 +45,8 @@ class WorksTableSeeder extends Seeder {
 				'created_at'  => Carbon\Carbon::now()->subDays( $count )->toDateTimeString(),
 				'updated_at'  => Carbon\Carbon::now()->subDays( $count )->toDateTimeString(),
 				'title'       => $work[0],
-				'wikidata_id' => $work[1]
+				'wikidata_id' => $work[1],
+				'philosopher_id' => $work[2]
 			] );
 			$count --;
 		}

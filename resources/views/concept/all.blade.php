@@ -24,7 +24,8 @@
             <div class="row">
 
                 @foreach($concepts as $concept)
-                    <a href="/concept/single/{{$concept->id}}"><span class="badge badge-secondary">{{$concept->concept}}</span></a>
+                    <a href="/concept/single/{{$concept->id}}"><span
+                                class="badge badge-secondary">{{$concept->concept}}</span></a>
                 @endforeach
             </div>
         </div>

@@ -59,7 +59,7 @@ Route::get('/concept/single/{concept_id}', 'ConceptController@single');
  * Arguments
  */
 Route::get('/argument/all', 'ArgumentController@all');
-Route::get('/argument/single', 'ArgumentController@single');
+Route::get('/argument/single/{argument_id}', 'ArgumentController@single');
 
 
 

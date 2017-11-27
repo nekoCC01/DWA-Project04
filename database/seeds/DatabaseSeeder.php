@@ -11,11 +11,11 @@ class DatabaseSeeder extends Seeder {
 	public function run() {
 		$this->call( [
 			PhilosophersTableSeeder::class,
+			WorksTableSeeder::class,
 			QuotesTableSeeder::class,
 			ConceptsTableSeeder::class,
 			DefinitionsTableSeeder::class,
 			ArgumentsTableSeeder::class,
-			WorksTableSeeder::class,
 			ArgumentConceptTableSeeder::class,
 			ArgumentQuoteTableSeeder::class,
 			ConceptQuoteTableSeeder::class

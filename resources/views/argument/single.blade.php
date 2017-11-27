@@ -12,21 +12,19 @@
 
 @section('featured_content')
 
-    <h2>Hume´s guillotine</h2>
+    <h2>{{$selected_argument->title}}</h2>
     <div class="row justify-content-md-center">
         <div class="col col-lg-2">
-            We can not derive an ´ought´- from an ´is´-statement.
+            {{$selected_argument->assumption}}
         </div>
         <div class="col-md-auto">
             <img src="/img/arrow_right.png"
                  alt="" width="20%">
         </div>
         <div class="col col-lg-2">
-            The world of value is separated from the world of fact.
+            {{$selected_argument->conclusion}}
         </div>
     </div>
-
-    <p><a class="btn btn-primary btn-sm" href="#" role="button">Another Random &raquo;</a></p>
 
 @endsection
 
@@ -38,9 +36,15 @@
                 <h3>Related concepts</h3>
             </div>
             <div class="row">
-                <span class="badge badge-secondary">New</span>
-                <span class="badge badge-secondary">New</span>
-                <span class="badge badge-secondary">New</span>
+
+                @foreach ($selected_argument->concepts as $related_concept)
+
+                    <a href="/concept/single/{{$related_concept->id}}">
+                        <span class="badge badge-secondary">{{$related_concept->concept}}</span>
+                    </a>
+
+                @endforeach
+
             </div>
         </div>
     </div>
@@ -51,48 +55,25 @@
 
             <div class="row">
                 <h3>Related Quotes</h3>
-                <figure class="figure">
-                    <blockquote>
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                        ut
-                        labore et dolore magna aliquyam erat,
-                        sed diam voluptua. At vero eos et accusam et
-                    </blockquote>
-                    <figcaption class="figure-caption">
-                        Plato Augustinus Kant
-                    </figcaption>
-                </figure>
-                <a href="/quote/single">Link</a>
-                <hr>
-                <figure class="figure">
-                    <blockquote>
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                        ut
-                        labore et dolore magna aliquyam erat,
-                        sed diam voluptua. At vero eos et accusam et
-                    </blockquote>
-                    <figcaption class="figure-caption">
-                        Plato Augustinus Kant
-                    </figcaption>
-                </figure>
-                <hr>
-                <figure class="figure">
-                    <blockquote>
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                        ut
-                        labore et dolore magna aliquyam erat,
-                        sed diam voluptua. At vero eos et accusam et
-                    </blockquote>
-                    <figcaption class="figure-caption">
-                        Plato Augustinus Kant
-                    </figcaption>
-                </figure>
+
+                @foreach ($selected_argument->quotes as $related_quote)
+
+                    <figure class="figure">
+                        <blockquote>
+                            {{$related_quote->quote}}
+                        </blockquote>
+                        <figcaption class="figure-caption">
+                            {{$related_quote->philosopher->name}}
+                        </figcaption>
+                    </figure>
+                    <a href="/quote/single/{{$related_quote->id}}">Link</a>
+                    <hr>
+
+                @endforeach
 
             </div>
         </div>
     </div>
-
-
 
 
 @endsection

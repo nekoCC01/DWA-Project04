@@ -20,9 +20,9 @@
             {{$random_quote->philosopher->name}}
         </figcaption>
     </figure>
-    <a href="/quote/single">Link</a>
+    <a href="/quote/single/{{$random_quote->philosopher->id}}">Link</a>
 
-    <p><a class="btn btn-primary btn-sm" href="#" role="button">Another Random &raquo;</a></p>
+    <p><a class="btn btn-primary btn-sm" href="/quote/all" role="button">Another Random &raquo;</a></p>
 
 @endsection
 

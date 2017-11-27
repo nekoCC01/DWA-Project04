@@ -12,7 +12,7 @@
 
 @section('featured_content')
 
-    <p>The selected Quote = {{$selected_quote->quote}}</p>
+    <p>{{$selected_quote->quote}}</p>
     {{$selected_quote->philosopher->name}}
 
 @endsection
@@ -27,7 +27,8 @@
             <div class="row">
 
                 @foreach ($selected_quote->concepts as $related_concept)
-                    <span class="badge badge-secondary">{{$related_concept->concept}}</span>
+                    <a href="/concept/single/{{$related_concept->id}}"><span
+                                class="badge badge-secondary">{{$related_concept->concept}}</span></a>
                 @endforeach
 
             </div>
@@ -51,9 +52,8 @@
                             {{$related_argument->philosopher->name}}
                         </figcaption>
                     </figure>
-                    <a href="/quote/single">Link</a>
+                    <a href="/argument/single/{{$related_argument->id}}">Link</a>
                     <hr>
-
 
                 @endforeach
 

@@ -6,21 +6,22 @@ use Illuminate\Http\Request;
 use App\Concept;
 use App\Argument;
 
-class ArgumentController extends Controller
-{
-	public function all()
-	{
-		/*
-		$argument = Argument::find(3);
-		dump($argument->concepts);
-		*/
+class ArgumentController extends Controller {
+	public function all() {
 
-		return view('argument.all');
+		$arguments = Argument::all();
+
+		return view( 'argument.all' )->with( [
+			'arguments' => $arguments
+		] );
 	}
 
-	public function single()
-	{
-		return view('argument.single');
+	public function single( $argument_id ) {
+		$selected_argument = Argument::find( $argument_id );
+
+		return view( 'argument.single' )->with( [
+			'selected_argument' => $selected_argument
+		] );
 	}
 
 }

@@ -10,22 +10,8 @@ class QuoteController extends Controller {
 
 
 	public function all() {
-		/*
-		$quotes = Quote::where('category','Religion')->get();
-		dump($quotes);
 
-
-		$quote = Quote::find(1);
-		echo $quote->philosopher->name;
-
-		dump($quote->concepts);
-
-		$quotes = Philosopher::find(8)->quotes;
-		dump($quotes);
-
-		*/
-
-		$quotes = Quote::all();
+		$quotes       = Quote::all();
 		$random_quote = $quotes->random();
 
 		return view( 'quote.all' )->with( [
@@ -35,9 +21,8 @@ class QuoteController extends Controller {
 
 	}
 
-	public function welcome()
-	{
-		$quotes = Quote::all();
+	public function welcome() {
+		$quotes       = Quote::all();
 		$random_quote = $quotes->random();
 
 		return view( 'welcome' )->with( [
@@ -45,13 +30,13 @@ class QuoteController extends Controller {
 		] );
 	}
 
-	public function single($quote_id) {
+	public function single( $quote_id ) {
 
-		$selected_quote = Quote::find($quote_id);
+		$selected_quote = Quote::find( $quote_id );
 
-		return view( 'quote.single' )->with([
+		return view( 'quote.single' )->with( [
 			'selected_quote' => $selected_quote
-		]);
+		] );
 	}
 
 }

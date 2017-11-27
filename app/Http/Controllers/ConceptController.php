@@ -6,27 +6,21 @@ use Illuminate\Http\Request;
 use App\Concept;
 use App\Argument;
 
-class ConceptController extends Controller
-{
-	public function all()
-	{
-		/*
-		$concept = Concept::find(1);
-		dump($concept->arguments);
-		*/
-
-
+class ConceptController extends Controller {
+	public function all() {
+		
 		$concepts = Concept::all();
 
-		return view('concept.all')->with([
+		return view( 'concept.all' )->with( [
 			'concepts' => $concepts
-		]);
+		] );
 	}
 
-	public function single($concept_id)
-	{
-		return view('concept.single')->with([
-			'concept_id' => $concept_id
-		]);
+	public function single( $concept_id ) {
+		$selected_concept = Concept::find( $concept_id );
+
+		return view( 'concept.single' )->with( [
+			'selected_concept' => $selected_concept
+		] );
 	}
 }

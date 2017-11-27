@@ -18,39 +18,23 @@
     <div class="container all_content">
 
         <div class="row">
-            <figure class="figure">
-                <blockquote>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                    labore et dolore magna aliquyam erat,
-                    sed diam voluptua. At vero eos et accusam et
-                </blockquote>
-                <figcaption class="figure-caption">
-                    Plato Augustinus Kant
-                </figcaption>
-            </figure>
-            <a href="/argument/single">Link</a>
-            <hr>
-            <figure class="figure">
-                <blockquote>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                    labore et dolore magna aliquyam erat,
-                    sed diam voluptua. At vero eos et accusam et
-                </blockquote>
-                <figcaption class="figure-caption">
-                    Plato Augustinus Kant
-                </figcaption>
-            </figure>
-            <hr>
-            <figure class="figure">
-                <blockquote>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                    labore et dolore magna aliquyam erat,
-                    sed diam voluptua. At vero eos et accusam et
-                </blockquote>
-                <figcaption class="figure-caption">
-                    Plato Augustinus Kant
-                </figcaption>
-            </figure>
+
+            @foreach ($arguments as $argument)
+
+
+                <figure class="figure">
+                    <h3>{{$argument->title}}</h3>
+                    <blockquote>
+                        {{$argument->assumption}} --> {{$argument->conclusion}}
+                    </blockquote>
+                    <figcaption class="figure-caption">
+                        {{$argument->philosopher->name}}
+                    </figcaption>
+                </figure>
+                <a href="/argument/single/{{$argument->id}}">Link</a>
+                <hr>
+
+            @endforeach
 
         </div>
 

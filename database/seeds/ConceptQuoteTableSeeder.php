@@ -14,7 +14,9 @@ class ConceptQuoteTableSeeder extends Seeder
 	    $concept_quote_links = [
 		    [1,1],
 		    [2,3],
-		    [3,3]
+		    [3,3],
+		    [1,2],
+		    [3,4]
 	    ];
 
 	    foreach( $concept_quote_links as $concept_quote_link)
