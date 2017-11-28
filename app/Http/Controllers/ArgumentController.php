@@ -207,4 +207,16 @@ class ArgumentController extends Controller
 
     }
 
+    public function unlink($type, $argument_id, $related_id)
+    {
+        $table                = "argument_" . $type;
+        $related_id_fieldname = $type . "_id";
+        DB::table($table)->where('argument_id', $argument_id)->where($related_id_fieldname, $related_id)->delete();
+
+        $redirect_path = '/argument/single/' . $argument_id;
+        $message       = 'The ' . $type . ' has been unlinked.';
+
+        return redirect($redirect_path)->with('alert', $message);
+    }
+
 }

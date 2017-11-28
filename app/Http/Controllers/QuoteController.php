@@ -221,5 +221,16 @@ class QuoteController extends Controller
 
     }
 
+    public function unlink($type, $quote_id, $related_id)
+    {
+        $table                = $type . "_quote";
+        $related_id_fieldname = $type . "_id";
+        DB::table($table)->where('quote_id', $quote_id)->where($related_id_fieldname, $related_id)->delete();
+
+        $redirect_path = '/quote/single/' . $quote_id;
+        $message       = 'The ' . $type . ' has been unlinked.';
+
+        return redirect($redirect_path)->with('alert', $message);
+    }
 
 }

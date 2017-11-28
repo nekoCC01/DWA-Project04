@@ -257,7 +257,7 @@ class ConceptController extends Controller
 
     public function delete($concept_id)
     {
-        Definition::where('concept_id',$concept_id)->delete();
+        Definition::where('concept_id', $concept_id)->delete();
         Concept::find($concept_id)->delete();
 
         DB::table('concept_quote')->where('concept_id', $concept_id)->delete();
@@ -276,6 +276,24 @@ class ConceptController extends Controller
 
         return redirect($redirect_path)->with('alert', 'The definition has been deleted.');
 
+    }
+
+    public function unlink($type, $concept_id, $related_id)
+    {
+
+        if ($type == 'argument') {
+            $table = 'argument_concept';
+        } elseif ($type == 'quote') {
+            $table = 'concept_quote';
+        }
+
+        $related_id_fieldname = $type . "_id";
+        DB::table($table)->where('concept_id', $concept_id)->where($related_id_fieldname, $related_id)->delete();
+
+        $redirect_path = '/concept/single/' . $concept_id;
+        $message       = 'The ' . $type . ' has been unlinked.';
+
+        return redirect($redirect_path)->with('alert', $message);
     }
 
 }

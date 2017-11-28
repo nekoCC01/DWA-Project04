@@ -42,6 +42,7 @@
                     <a href="/concept/single/{{$related_concept->id}}">
                         <span class="badge badge-secondary">{{$related_concept->concept}}</span>
                     </a>
+                    <a href="/argument/unlink/concept/{{$selected_argument->id}}/{{$related_concept->id}}">Unlink</a>
 
                 @endforeach
 
@@ -110,7 +111,8 @@
                             {{$related_quote->philosopher->name}}
                         </figcaption>
                     </figure>
-                    <a href="/quote/single/{{$related_quote->id}}">Link</a>
+                    <a href="/quote/single/{{$related_quote->id}}">View</a> /
+                    <a href="/argument/unlink/quote/{{$selected_argument->id}}/{{$related_quote->id}}">Unlink</a>
                     <hr>
 
                 @endforeach

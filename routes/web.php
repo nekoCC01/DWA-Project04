@@ -66,6 +66,8 @@ Route::post('/quote/store_concept/{quote_id}', 'QuoteController@store_concept');
 # relate to argument
 Route::get('/quote/add_argument/{quote_id}', 'QuoteController@add_argument');
 Route::post('/quote/store_argument/{quote_id}', 'QuoteController@store_argument');
+# Unlink argument or concept
+Route::get('/quote/unlink/{type}/{quote_id}/{related_id}', 'QuoteController@unlink');
 
 
 /*
@@ -100,6 +102,8 @@ Route::post('/concept/store_quote/{concept_id}', 'ConceptController@store_quote'
 # relate to argument
 Route::get('/concept/add_argument/{concept_id}', 'ConceptController@add_argument');
 Route::post('/concept/store_argument/{concept_id}', 'ConceptController@store_argument');
+# Unlink quote or argument
+Route::get('/concept/unlink/{type}/{concept_id}/{related_id}', 'ConceptController@unlink');
 
 /*
  * Arguments
@@ -125,4 +129,5 @@ Route::post('/argument/store_concept/{argument_id}', 'ArgumentController@store_c
 # relate to quote
 Route::get('/argument/add_quote/{argument_id}', 'ArgumentController@add_quote');
 Route::post('/argument/store_quote/{argument_id}', 'ArgumentController@store_quote');
-
+# Unlink quote or argument
+Route::get('/argument/unlink/{type}/{argument_id}/{related_id}', 'ArgumentController@unlink');

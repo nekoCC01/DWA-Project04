@@ -33,7 +33,7 @@
                         {{$argument->philosopher->name}}
                     </figcaption>
                 </figure>
-                <a href="/argument/single/{{$argument->id}}">Link</a> |
+                <a href="/argument/single/{{$argument->id}}">View</a> |
                 <a href="/argument/edit/{{$argument->id}}">Edit</a> |
                 <a href="/argument/delete/{{$argument->id}}">Delete</a>
                 <hr>

@@ -31,6 +31,7 @@
                 @foreach ($selected_quote->concepts as $related_concept)
                     <a href="/concept/single/{{$related_concept->id}}"><span
                                 class="badge badge-secondary">{{$related_concept->concept}}</span></a>
+                    <a href="/quote/unlink/concept/{{$selected_quote->id}}/{{$related_concept->id}}">Unlink</a>
                 @endforeach
 
                 @if($showConceptForm)
@@ -100,11 +101,11 @@
                             {{$related_argument->philosopher->name}}
                         </figcaption>
                     </figure>
-                    <a href="/argument/single/{{$related_argument->id}}">Link</a>
+                    <a href="/argument/single/{{$related_argument->id}}">View</a> |
+                    <a href="/quote/unlink/argument/{{$selected_quote->id}}/{{$related_argument->id}}">Unlink</a>
                     <hr>
 
                 @endforeach
-
 
             </div>
         </div>

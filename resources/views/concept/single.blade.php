@@ -95,7 +95,8 @@
                                 {{$related_quote->philosopher->name}}
                             </figcaption>
                         </figure>
-                        <a href="/quote/single/{{$related_quote->id}}">Link</a>
+                        <a href="/quote/single/{{$related_quote->id}}">View</a> |
+                        <a href="/concept/unlink/quote/{{$selected_concept->id}}/{{$related_quote->id}}">Unlink</a>
                         <hr>
                     @endforeach
 
@@ -132,7 +133,8 @@
                                 {{$related_argument->philosopher->name}}
                             </figcaption>
                         </figure>
-                        <a href="/argument/single/{{$related_argument->id}}">Link</a>
+                        <a href="/argument/single/{{$related_argument->id}}">View</a> |
+                        <a href="/concept/unlink/argument/{{$selected_concept->id}}/{{$related_argument->id}}">Unlink</a>
                         <hr>
                     @endforeach
 
