@@ -15,7 +15,24 @@
     <div class="container-fluid concepts">
         <div class="container">
             <div class="row">
-                <h3><span class="badge badge-secondary">{{$selected_concept->concept}}</span></h3>
+                
+                @if($edit_concept)
+                    <form action="/concept/update/{{$selected_concept->id}}" method="POST">
+
+                        {{ csrf_field() }}
+
+                        <div class='form-group'>
+                            <input type='text' class='form-control' name='concept' id='concept'
+                                   value='{{ old('concept', $selected_concept->concept) }}'>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Concept</button>
+                    </form>
+                @else
+                    <h3><span class="badge badge-secondary">{{$selected_concept->concept}}</span></h3>
+                    <a href="/concept/edit/{{$selected_concept->id}}">Edit Concept</a>
+                @endif
+                    
+                
             </div>
             <div class="row">
                 Definitions:
@@ -25,6 +42,7 @@
                         <li>
                             {{$definition->definition}} <br>
                             by {{$definition->philosopher->name}}
+                            <a href="/concept/edit_definition/{{$definition->id}}">Edit</a>
                         </li>
                     @endforeach
                 </ul>

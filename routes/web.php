@@ -70,6 +70,9 @@ Route::post('/concept/definition', 'ConceptController@store_definition');
 # Edit a concept
 Route::get('/concept/edit/{quote_id}','ConceptController@edit');
 Route::post('/concept/update/{quote_id}', 'ConceptController@update');
+# Edit a definition
+Route::get('/concept/edit_definition/{definition_id}', 'ConceptController@edit_definition');
+Route::post('/concept/definition/update/{definition_id}','ConceptController@update_definition');
 # View all concepts
 Route::get('/concept/all', 'ConceptController@all');
 # View a single concept, with its definitions
