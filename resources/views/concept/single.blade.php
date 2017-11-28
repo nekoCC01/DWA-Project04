@@ -63,6 +63,27 @@
                 <div class="col">
                     <h3>Related Quotes</h3>
 
+                    @if($showQuoteForm)
+                        <form method='POST' action='/concept/store_quote/{{$selected_concept->id}}'>
+
+                            {{ csrf_field() }}
+
+                            <div class='form-group'>
+                                <select class='form-control' name='quote' id='quote'>
+                                    <option value="">- Select an argument -</option>
+                                    @foreach ($quotes as $quote)
+                                        <option value="{{$quote->id}}">{{$quote->quote}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Add Quote</button>
+                        </form>
+                    @else
+                        <a href="/concept/add_quote/{{$selected_concept->id}}">Add another quote</a>
+                    @endif
+
+
+
                     @foreach ($selected_concept->quotes as $related_quote)
                         <figure class="figure">
                             <blockquote>

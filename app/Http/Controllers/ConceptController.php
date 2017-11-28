@@ -8,6 +8,8 @@ use App\Concept;
 use App\Argument;
 use App\Philosopher;
 use App\Work;
+use App\Quote;
+use DB;
 
 class ConceptController extends Controller
 {
@@ -28,9 +30,14 @@ class ConceptController extends Controller
         $selected_concept = Concept::find($concept_id);
         $edit_concept     = false;
 
+        $showQuoteForm    = false;
+        $showArgumentForm = false;
+
         return view('concept.single')->with([
             'selected_concept' => $selected_concept,
-            'edit_concept'     => $edit_concept
+            'edit_concept'     => $edit_concept,
+            'showQuoteForm'    => $showQuoteForm,
+            'showArgumentForm' => $showArgumentForm
         ]);
     }
 
@@ -183,5 +190,38 @@ class ConceptController extends Controller
         return redirect($redirect_path)->with('alert', 'The definition was edited.');
 
     }
+
+    public function add_quote($concept_id)
+    {
+
+        $selected_concept = Concept::find($concept_id);
+        $edit_concept     = false;
+
+        $showQuoteForm    = true;
+        $showArgumentForm = false;
+
+        $quotes = Quote::all();
+
+        return view('concept.single')->with([
+            'selected_concept' => $selected_concept,
+            'edit_concept'     => $edit_concept,
+            'showQuoteForm'    => $showQuoteForm,
+            'showArgumentForm' => $showArgumentForm,
+            'quotes'           => $quotes
+        ]);
+    }
+
+    public function store_quote(Request $request, $concept_id)
+    {
+        DB::table('concept_quote')->insert([
+            'quote_id'   => $request->input('quote'),
+            'concept_id' => $concept_id
+        ]);
+
+        $redirect_path = '/concept/single/' . $concept_id;
+
+        return redirect($redirect_path)->with('alert', 'The concept has been added.');
+    }
+
 
 }

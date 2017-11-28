@@ -85,7 +85,12 @@ Route::post('/concept/definition/update/{definition_id}', 'ConceptController@upd
 Route::get('/concept/all', 'ConceptController@all');
 # View a single concept, with its definitions
 Route::get('/concept/single/{concept_id}', 'ConceptController@single');
-
+/*
+ * Bulding relations
+ */
+# relate to quote
+Route::get('/concept/add_quote/{concept_id}', 'ConceptController@add_quote');
+Route::post('/concept/store_quote/{concept_id}', 'ConceptController@store_quote');
 
 /*
  * Arguments
