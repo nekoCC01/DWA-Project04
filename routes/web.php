@@ -91,6 +91,9 @@ Route::get('/concept/single/{concept_id}', 'ConceptController@single');
 # relate to quote
 Route::get('/concept/add_quote/{concept_id}', 'ConceptController@add_quote');
 Route::post('/concept/store_quote/{concept_id}', 'ConceptController@store_quote');
+# relate to argument
+Route::get('/concept/add_argument/{concept_id}', 'ConceptController@add_argument');
+Route::post('/concept/store_argument/{concept_id}', 'ConceptController@store_argument');
 
 /*
  * Arguments

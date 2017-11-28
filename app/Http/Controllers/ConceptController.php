@@ -223,5 +223,36 @@ class ConceptController extends Controller
         return redirect($redirect_path)->with('alert', 'The concept has been added.');
     }
 
+    public function add_argument($concept_id)
+    {
+
+        $selected_concept = Concept::find($concept_id);
+        $edit_concept     = false;
+
+        $showQuoteForm    = false;
+        $showArgumentForm = true;
+
+        $arguments = Argument::all();
+
+        return view('concept.single')->with([
+            'selected_concept' => $selected_concept,
+            'edit_concept'     => $edit_concept,
+            'showQuoteForm'    => $showQuoteForm,
+            'showArgumentForm' => $showArgumentForm,
+            'arguments'        => $arguments
+        ]);
+    }
+
+    public function store_argument(Request $request, $concept_id)
+    {
+        DB::table('argument_concept')->insert([
+            'argument_id' => $request->input('argument'),
+            'concept_id'  => $concept_id
+        ]);
+
+        $redirect_path = '/concept/single/' . $concept_id;
+
+        return redirect($redirect_path)->with('alert', 'The argument has been added.');
+    }
 
 }

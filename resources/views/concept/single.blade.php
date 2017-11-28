@@ -15,7 +15,7 @@
     <div class="container-fluid concepts">
         <div class="container">
             <div class="row">
-                
+
                 @if($edit_concept)
                     <form action="/concept/update/{{$selected_concept->id}}" method="POST">
 
@@ -31,8 +31,8 @@
                     <h3><span class="badge badge-secondary">{{$selected_concept->concept}}</span></h3>
                     <a href="/concept/edit/{{$selected_concept->id}}">Edit Concept</a>
                 @endif
-                    
-                
+
+
             </div>
             <div class="row">
                 Definitions:
@@ -70,7 +70,7 @@
 
                             <div class='form-group'>
                                 <select class='form-control' name='quote' id='quote'>
-                                    <option value="">- Select an argument -</option>
+                                    <option value="">- Select a quote -</option>
                                     @foreach ($quotes as $quote)
                                         <option value="{{$quote->id}}">{{$quote->quote}}</option>
                                     @endforeach
@@ -101,6 +101,25 @@
                 <div class="col">
 
                     <h3>Related Arguments</h3>
+
+                    @if($showArgumentForm)
+                        <form method='POST' action='/concept/store_argument/{{$selected_concept->id}}'>
+
+                            {{ csrf_field() }}
+
+                            <div class='form-group'>
+                                <select class='form-control' name='argument' id='argument'>
+                                    <option value="">- Select an argument -</option>
+                                    @foreach ($arguments as $argument)
+                                        <option value="{{$argument->id}}">{{$argument->title}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Add Argument</button>
+                        </form>
+                    @else
+                        <a href="/concept/add_argument/{{$selected_concept->id}}">Add another argument</a>
+                    @endif
 
                     @foreach ($selected_concept->arguments as $related_argument)
                         <figure class="figure">
