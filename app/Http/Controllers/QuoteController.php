@@ -59,13 +59,13 @@ class QuoteController extends Controller
     public function store(Request $request)
     {
 
-        $quote = new Quote();
-        $quote->quote = $request->input('quote');
+        $quote           = new Quote();
+        $quote->quote    = $request->input('quote');
         $quote->language = $request->input('language');
 
-        if($request->input('philosopher_new') != ''){
+        if ($request->input('philosopher_new') != '') {
 
-            $philosopher = new Philosopher();
+            $philosopher       = new Philosopher();
             $philosopher->name = $request->input('philosopher_new');
             $philosopher->save();
             $philosopher_id = $philosopher->id;
@@ -78,9 +78,9 @@ class QuoteController extends Controller
         }
         $quote->philosopher_id = $philosopher_id;
 
-        if($request->input('work_new') != ''){
-            $work = new Work();
-            $work->title = $request->input('work_new');
+        if ($request->input('work_new') != '') {
+            $work                 = new Work();
+            $work->title          = $request->input('work_new');
             $work->philosopher_id = $philosopher_id;
             $work->save();
             $quote->work_id = $work->id;
@@ -102,20 +102,20 @@ class QuoteController extends Controller
         return view('quote.edit')->with([
             'philosophers' => $philosophers,
             'works'        => $works,
-            'quote' => $quote
+            'quote'        => $quote
         ]);
 
     }
 
     public function update(Request $request, $quote_id)
     {
-        $quote = Quote::find($quote_id);
-        $quote->quote = $request->input('quote');
+        $quote           = Quote::find($quote_id);
+        $quote->quote    = $request->input('quote');
         $quote->language = $request->input('language');
 
-        if($request->input('philosopher_new') != ''){
+        if ($request->input('philosopher_new') != '') {
 
-            $philosopher = new Philosopher();
+            $philosopher       = new Philosopher();
             $philosopher->name = $request->input('philosopher_new');
             $philosopher->save();
             $philosopher_id = $philosopher->id;
@@ -128,9 +128,9 @@ class QuoteController extends Controller
         }
         $quote->philosopher_id = $philosopher_id;
 
-        if($request->input('work_new') != ''){
-            $work = new Work();
-            $work->title = $request->input('work_new');
+        if ($request->input('work_new') != '') {
+            $work                 = new Work();
+            $work->title          = $request->input('work_new');
             $work->philosopher_id = $philosopher_id;
             $work->save();
             $quote->work_id = $work->id;

@@ -33,7 +33,8 @@
                         {{$argument->philosopher->name}}
                     </figcaption>
                 </figure>
-                <a href="/argument/single/{{$argument->id}}">Link</a>
+                <a href="/argument/single/{{$argument->id}}">Link</a> |
+                <a href="/argument/edit/{{$argument->id}}">Edit</a>
                 <hr>
 
             @endforeach
