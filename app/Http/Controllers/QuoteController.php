@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Quote;
 use App\Philosopher;
 use App\Work;
+use App\Concept;
+use App\Argument;
+use DB;
 
 class QuoteController extends Controller
 {
@@ -36,11 +39,15 @@ class QuoteController extends Controller
 
     public function single($quote_id)
     {
-
         $selected_quote = Quote::find($quote_id);
 
+        $showConceptForm  = false;
+        $showArgumentForm = false;
+
         return view('quote.single')->with([
-            'selected_quote' => $selected_quote
+            'selected_quote'   => $selected_quote,
+            'showConceptForm'  => $showConceptForm,
+            'showArgumentForm' => $showArgumentForm
         ]);
     }
 
@@ -140,8 +147,36 @@ class QuoteController extends Controller
         $quote->save();
 
         return redirect('/quote/all')->with('alert', 'The quote was edited.');
-
-
     }
 
+
+    public function add_concept($quote_id)
+    {
+        $selected_quote = Quote::find($quote_id);
+
+        $showConceptForm  = true;
+        $showArgumentForm = true;
+
+        $concepts = Concept::all();
+
+        return view('quote.single')->with([
+            'selected_quote'   => $selected_quote,
+            'showConceptForm'  => $showConceptForm,
+            'showArgumentForm' => $showArgumentForm,
+            'concepts'         => $concepts
+        ]);
+    }
+
+    public function store_concept(Request $request, $quote_id)
+    {
+        DB::table('concept_quote')->insert([
+            'quote_id'   => $quote_id,
+            'concept_id' => $request->input('concept')
+        ]);
+
+        $redirect_path = '/quote/single/' . $quote_id;
+
+        return redirect($redirect_path)->with('alert', 'The concept has been added.');
+
+    }
 }

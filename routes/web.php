@@ -45,7 +45,6 @@ Route::get('/', 'QuoteController@welcome');
 /*
  * Quotes
  */
-
 # Create a quote
 Route::get('/quote/create', 'QuoteController@create');
 Route::post('/quote', 'QuoteController@store');
@@ -56,6 +55,13 @@ Route::post('/quote/update/{quote_id}', 'QuoteController@update');
 Route::get('/quote/all', 'QuoteController@all');
 # View a single quote
 Route::get('/quote/single/{quote_id}', 'QuoteController@single');
+/*
+ * Bulding relations
+ */
+# relate to concept
+Route::get('/quote/add_concept/{quote_id}', 'QuoteController@add_concept');
+Route::post('/quote/store_concept/{quote_id}', 'QuoteController@store_concept');
+
 
 /*
  * Concepts
@@ -76,6 +82,7 @@ Route::post('/concept/definition/update/{definition_id}', 'ConceptController@upd
 Route::get('/concept/all', 'ConceptController@all');
 # View a single concept, with its definitions
 Route::get('/concept/single/{concept_id}', 'ConceptController@single');
+
 
 /*
  * Arguments

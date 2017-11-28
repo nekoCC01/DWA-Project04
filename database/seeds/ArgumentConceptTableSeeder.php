@@ -19,10 +19,10 @@ class ArgumentConceptTableSeeder extends Seeder
 
         foreach( $argument_concept_links as $argument_concept_link)
         {
-	        DB::table('argument_concept')->insert([
-	        	'argument_id' => $argument_concept_link[0],
-		        'concept_id' => $argument_concept_link[1]
-	        ]);
+            DB::table('argument_concept')->insert([
+                'argument_id' => $argument_concept_link[0],
+                'concept_id'  => $argument_concept_link[1]
+            ]);
         }
     }
 }

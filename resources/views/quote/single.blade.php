@@ -19,6 +19,8 @@
 
 @section('content')
 
+
+
     <div class="container-fluid concepts">
         <div class="container">
             <div class="row">
@@ -30,6 +32,28 @@
                     <a href="/concept/single/{{$related_concept->id}}"><span
                                 class="badge badge-secondary">{{$related_concept->concept}}</span></a>
                 @endforeach
+
+                @if($showConceptForm)
+
+                    <form method='POST' action='/quote/store_concept/{{$selected_quote->id}}'>
+
+                        {{ csrf_field() }}
+
+                        <div class='form-group'>
+                            <select class='form-control' name='concept' id='concept'>
+                                <option value="">- Select a concept -</option>
+                                @foreach ($concepts as $concept)
+                                    <option value="{{$concept->id}}">{{$concept->concept}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Concept</button>
+                    </form>
+
+                @else
+                    <a href="/quote/add_concept/{{$selected_quote->id}}">Add another concept</a>
+                @endif
+
 
             </div>
         </div>
