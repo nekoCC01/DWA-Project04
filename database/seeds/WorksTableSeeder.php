@@ -28,7 +28,7 @@ class WorksTableSeeder extends Seeder {
 			],
 			[
 				'Meditations',
-				'',
+				null,
 				9
 			],
 			[

@@ -17,6 +17,8 @@
 @section('content')
     <div class="container all_content">
 
+        <a href="/argument/create">Add new argument</a>
+
         <div class="row">
 
             @foreach ($arguments as $argument)

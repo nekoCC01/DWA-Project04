@@ -28,6 +28,31 @@
                                 class="badge badge-secondary">{{$concept->concept}}</span></a>
                 @endforeach
             </div>
+
+
+            @if($showForm)
+                <div class="row">
+
+                    <form method='POST' action='/concept'>
+
+                        {{ csrf_field() }}
+
+                        <div class='form-group'>
+                            <input type='text' class='form-control' name='concept' id='concept' placeholder='Enter concept'
+                                   value='{{ old('concept', '') }}'>
+                            @include('modules.error-field', ['fieldName' => 'concept'])
+                        </div>
+
+                        <hr>
+
+                        <button type="submit" class="btn btn-primary">Add Concept</button>
+                    </form>
+                </div>
+            @else
+                <a href="/concept/create">Add new concept</a>
+            @endif
+
+
         </div>
     </div>
 

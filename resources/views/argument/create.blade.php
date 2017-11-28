@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Add a quote
+    Add an arguments
 @endsection
 
 
@@ -11,37 +11,34 @@
     <div class="container">
         <div class="row">
 
-            <form method='POST' action='/quote'>
+            <form method='POST' action='/argument'>
 
                 {{ csrf_field() }}
 
                 <small class='form-text text-muted'>* Required fields</small>
 
                 <div class='form-group'>
-                    <label for='quote'>* Quote</label>
-                    <input type='text' class='form-control' name='quote' id='quote' placeholder='Enter Quote'
-                           value='{{ old('quote', '') }}'>
+                    <label for='title'>* Title</label>
+                    <input type='text' class='form-control' name='title' id='title' placeholder='Enter Title'
+                           value='{{ old('title', '') }}'>
                     @include('modules.error-field', ['fieldName' => 'title'])
                 </div>
 
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="language" id="exampleRadios1" value="English" checked>
-                        English
-                    </label>
+                <div class='form-group'>
+                    <label for='assumption'>* Assumption</label>
+                    <input type='text' class='form-control' name='assumption' id='assumption' placeholder='Enter Assumption'
+                           value='{{ old('assumption', '') }}'>
+                    @include('modules.error-field', ['fieldName' => 'assumption'])
                 </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="language" id="exampleRadios2" value="German">
-                        German
-                    </label>
+
+                <div class='form-group'>
+                    <label for='conclusion'>* Conclusion</label>
+                    <input type='text' class='form-control' name='conclusion' id='conclusion' placeholder='Enter Conclusion'
+                           value='{{ old('conclusion', '') }}'>
+                    @include('modules.error-field', ['fieldName' => 'conclusion'])
                 </div>
-                <div class="form-check disabled">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="language" id="exampleRadios3" value="French">
-                        French
-                    </label>
-                </div>
+
+                <!--TODO Das Zusatz-Fieldset evtl auslagern als Sub-View -->
                 <div class='form-group'> Philosopher Pulldown
                     <select class='form-control' name='philosopher' id='philosopher'>
                         <option value="">- Select a philosopher -</option>
@@ -81,12 +78,11 @@
                 </fieldset>
                 <hr>
 
-                <button type="submit" class="btn btn-primary">Add Quote</button>
+                <button type="submit" class="btn btn-primary">Add Argument</button>
             </form>
 
         </div>
     </div>
-
 
 @endsection
 

@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Add a quote
+    Add a definition
 @endsection
 
 
@@ -11,37 +11,20 @@
     <div class="container">
         <div class="row">
 
-            <form method='POST' action='/quote'>
+            <form method='POST' action='/concept/definition'>
 
                 {{ csrf_field() }}
 
                 <small class='form-text text-muted'>* Required fields</small>
 
                 <div class='form-group'>
-                    <label for='quote'>* Quote</label>
-                    <input type='text' class='form-control' name='quote' id='quote' placeholder='Enter Quote'
-                           value='{{ old('quote', '') }}'>
-                    @include('modules.error-field', ['fieldName' => 'title'])
+                    <label for='definition'>* Definition</label>
+                    <input type='text' class='form-control' name='definition' id='definition' placeholder='Enter definition'
+                           value='{{ old('definition', '') }}'>
+                    @include('modules.error-field', ['fieldName' => 'definition'])
                 </div>
 
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="language" id="exampleRadios1" value="English" checked>
-                        English
-                    </label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="language" id="exampleRadios2" value="German">
-                        German
-                    </label>
-                </div>
-                <div class="form-check disabled">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="language" id="exampleRadios3" value="French">
-                        French
-                    </label>
-                </div>
+                <!--TODO Das Zusatz-Fieldset evtl auslagern als Sub-View -->
                 <div class='form-group'> Philosopher Pulldown
                     <select class='form-control' name='philosopher' id='philosopher'>
                         <option value="">- Select a philosopher -</option>
@@ -81,12 +64,12 @@
                 </fieldset>
                 <hr>
 
-                <button type="submit" class="btn btn-primary">Add Quote</button>
+                <input type="hidden" name="concept_id" value="{{$concept_id}}">
+                <button type="submit" class="btn btn-primary">Add Definition</button>
             </form>
 
         </div>
     </div>
-
 
 @endsection
 

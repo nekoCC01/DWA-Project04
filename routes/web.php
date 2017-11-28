@@ -58,13 +58,26 @@ Route::get('/quote/single/{quote_id}', 'QuoteController@single');
 /*
  * Concepts
  */
+# Create a concept
+Route::get('/concept/create', 'ConceptController@create');
+Route::post('/concept', 'ConceptController@store');
+# Create a definition
+Route::get('/concept/create_definition/{concept_id}', 'ConceptController@create_definition');
+Route::post('/concept/definition', 'ConceptController@store_definition');
+# View all concepts
 Route::get('/concept/all', 'ConceptController@all');
+# View a single concept, with its definitions
 Route::get('/concept/single/{concept_id}', 'ConceptController@single');
 
 /*
  * Arguments
  */
+# Create an argument
+Route::get('/argument/create', 'ArgumentController@create');
+Route::post('/argument', 'ArgumentController@store');
+# View all arguments
 Route::get('/argument/all', 'ArgumentController@all');
+# View a single argument
 Route::get('/argument/single/{argument_id}', 'ArgumentController@single');
 
 
