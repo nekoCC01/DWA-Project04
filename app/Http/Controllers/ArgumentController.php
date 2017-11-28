@@ -166,5 +166,35 @@ class ArgumentController extends Controller
 
     }
 
+    public function add_quote($argument_id)
+    {
+
+        $selected_argument = Argument::find($argument_id);
+
+        $showConceptForm = false;
+        $showQuoteForm   = true;
+
+        $quotes = Quote::all();
+
+        return view('argument.single')->with([
+            'selected_argument' => $selected_argument,
+            'showConceptForm'   => $showConceptForm,
+            'showQuoteForm'     => $showQuoteForm,
+            'quotes'            => $quotes
+        ]);
+    }
+
+    public function store_quote(Request $request, $argument_id)
+    {
+        DB::table('argument_quote')->insert([
+            'quote_id'    => $request->input('quote'),
+            'argument_id' => $argument_id
+        ]);
+
+        $redirect_path = '/argument/single/' . $argument_id;
+
+        return redirect($redirect_path)->with('alert', 'The quote has been added.');
+    }
+
 
 }
