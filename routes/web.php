@@ -61,6 +61,9 @@ Route::get('/quote/single/{quote_id}', 'QuoteController@single');
 # relate to concept
 Route::get('/quote/add_concept/{quote_id}', 'QuoteController@add_concept');
 Route::post('/quote/store_concept/{quote_id}', 'QuoteController@store_concept');
+# relate to argument
+Route::get('/quote/add_argument/{quote_id}', 'QuoteController@add_argument');
+Route::post('/quote/store_argument/{quote_id}', 'QuoteController@store_argument');
 
 
 /*

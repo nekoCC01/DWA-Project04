@@ -155,7 +155,7 @@ class QuoteController extends Controller
         $selected_quote = Quote::find($quote_id);
 
         $showConceptForm  = true;
-        $showArgumentForm = true;
+        $showArgumentForm = false;
 
         $concepts = Concept::all();
 
@@ -179,4 +179,35 @@ class QuoteController extends Controller
         return redirect($redirect_path)->with('alert', 'The concept has been added.');
 
     }
+
+    public function add_argument($quote_id)
+    {
+        $selected_quote = Quote::find($quote_id);
+
+        $showConceptForm  = false;
+        $showArgumentForm = true;
+
+        $arguments = Argument::all();
+
+        return view('quote.single')->with([
+            'selected_quote'   => $selected_quote,
+            'showConceptForm'  => $showConceptForm,
+            'showArgumentForm' => $showArgumentForm,
+            'arguments'        => $arguments
+        ]);
+
+    }
+
+    public function store_argument(Request $request, $quote_id)
+    {
+        DB::table('argument_quote')->insert([
+            'quote_id'    => $quote_id,
+            'argument_id' => $request->input('argument')
+        ]);
+
+        $redirect_path = '/quote/single/' . $quote_id;
+
+        return redirect($redirect_path)->with('alert', 'The argument has been added.');
+    }
+
 }

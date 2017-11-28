@@ -66,6 +66,30 @@
             <div class="row">
                 <h2>Related Arguments</h2>
 
+
+                @if ($showArgumentForm)
+                    <form method='POST' action='/quote/store_argument/{{$selected_quote->id}}'>
+
+                        {{ csrf_field() }}
+
+                        <div class='form-group'>
+                            <select class='form-control' name='argument' id='argument'>
+                                <option value="">- Select an argument -</option>
+                                @foreach ($arguments as $argument)
+                                    <option value="{{$argument->id}}">{{$argument->title}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Argument</button>
+                    </form>
+
+                @else
+                    <a href="/quote/add_argument/{{$selected_quote->id}}">Add another argument</a>
+
+                @endif
+
+
+
                 @foreach($selected_quote->arguments as $related_argument)
 
                     <figure class="figure">
