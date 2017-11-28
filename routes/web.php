@@ -50,6 +50,9 @@ Route::get('/', 'QuoteController@welcome');
 # Create a quote
 Route::get('/quote/create', 'QuoteController@create');
 Route::post('/quote', 'QuoteController@store');
+# Edit a quote
+Route::get('/quote/edit/{quote_id}','QuoteController@edit');
+Route::post('/quote/update/{quote_id}', 'QuoteController@update');
 # View all quotes
 Route::get('/quote/all', 'QuoteController@all');
 # View a single quote
@@ -64,6 +67,9 @@ Route::post('/concept', 'ConceptController@store');
 # Create a definition
 Route::get('/concept/create_definition/{concept_id}', 'ConceptController@create_definition');
 Route::post('/concept/definition', 'ConceptController@store_definition');
+# Edit a concept
+Route::get('/concept/edit/{quote_id}','ConceptController@edit');
+Route::post('/concept/update/{quote_id}', 'ConceptController@update');
 # View all concepts
 Route::get('/concept/all', 'ConceptController@all');
 # View a single concept, with its definitions

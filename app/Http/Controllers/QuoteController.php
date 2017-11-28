@@ -92,4 +92,56 @@ class QuoteController extends Controller
         return redirect('/quote/all')->with('alert', 'The quote was added.');
     }
 
+    public function edit($quote_id)
+    {
+        $quote = Quote::find($quote_id);
+
+        $philosophers = Philosopher::all();
+        $works        = Work::all();
+
+        return view('quote.edit')->with([
+            'philosophers' => $philosophers,
+            'works'        => $works,
+            'quote' => $quote
+        ]);
+
+    }
+
+    public function update(Request $request, $quote_id)
+    {
+        $quote = Quote::find($quote_id);
+        $quote->quote = $request->input('quote');
+        $quote->language = $request->input('language');
+
+        if($request->input('philosopher_new') != ''){
+
+            $philosopher = new Philosopher();
+            $philosopher->name = $request->input('philosopher_new');
+            $philosopher->save();
+            $philosopher_id = $philosopher->id;
+        } else {
+            $philosopher_id = $request->input('philosopher');
+
+            if ($request->input('philosopher') == '') {
+                //TODO pass message: Either choose a philosopher or enter a new one
+            }
+        }
+        $quote->philosopher_id = $philosopher_id;
+
+        if($request->input('work_new') != ''){
+            $work = new Work();
+            $work->title = $request->input('work_new');
+            $work->philosopher_id = $philosopher_id;
+            $work->save();
+            $quote->work_id = $work->id;
+        } else {
+            $quote->work_id = $request->input('work');
+        }
+        $quote->save();
+
+        return redirect('/quote/all')->with('alert', 'The quote was edited.');
+
+
+    }
+
 }

@@ -46,7 +46,7 @@
                         {{$quote->philosopher->name}}
                     </figcaption>
                 </figure>
-
+                <a href="/quote/edit/{{$quote->id}}">Edit</a>
                 <hr>
 
             @endforeach

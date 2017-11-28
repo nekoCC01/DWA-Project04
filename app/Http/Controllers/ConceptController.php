@@ -22,9 +22,10 @@ class ConceptController extends Controller {
 
 	public function single( $concept_id ) {
 		$selected_concept = Concept::find( $concept_id );
-
+		$edit_concept = false;
 		return view( 'concept.single' )->with( [
-			'selected_concept' => $selected_concept
+			'selected_concept' => $selected_concept,
+            'edit_concept' => $edit_concept
 		] );
 	}
 
@@ -97,6 +98,17 @@ class ConceptController extends Controller {
 
         $redirect_path = '/concept/single/' . $request->input('concept_id');
         return redirect($redirect_path)->with('alert', 'The definition was added.');
+    }
+
+
+    public function edit($concept_id)
+    {
+        $selected_concept = Concept::find( $concept_id );
+        $edit_concept = true;
+        return view( 'concept.single' )->with( [
+            'selected_concept' => $selected_concept,
+            'edit_concept' => $edit_concept
+        ] );
     }
 
 }
