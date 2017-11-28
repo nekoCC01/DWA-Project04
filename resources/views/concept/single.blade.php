@@ -32,6 +32,7 @@
                     <a href="/concept/edit/{{$selected_concept->id}}">Edit Concept</a>
                 @endif
 
+                <a href="/concept/delete/{{$selected_concept->id}}">Delete</a>
 
             </div>
             <div class="row">
@@ -42,7 +43,8 @@
                         <li>
                             {{$definition->definition}} <br>
                             by {{$definition->philosopher->name}}
-                            <a href="/concept/edit_definition/{{$definition->id}}">Edit</a>
+                            <a href="/concept/edit_definition/{{$definition->id}}">Edit</a> /
+                            <a href="/concept/delete_definition/{{$selected_concept->id}}/{{$definition->id}}">Delete</a>
                         </li>
                     @endforeach
                 </ul>

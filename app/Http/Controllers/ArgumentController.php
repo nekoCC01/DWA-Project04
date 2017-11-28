@@ -196,5 +196,15 @@ class ArgumentController extends Controller
         return redirect($redirect_path)->with('alert', 'The quote has been added.');
     }
 
+    public function delete($argument_id)
+    {
+        Argument::find($argument_id)->delete();
+
+        DB::table('argument_quote')->where('argument_id', $argument_id)->delete();
+        DB::table('argument_concept')->where('argument_id', $argument_id)->delete();
+
+        return redirect('/argument/all')->with('alert', 'The argument has been deleted.');
+
+    }
 
 }

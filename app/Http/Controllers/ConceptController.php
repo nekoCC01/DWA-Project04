@@ -255,4 +255,27 @@ class ConceptController extends Controller
         return redirect($redirect_path)->with('alert', 'The argument has been added.');
     }
 
+    public function delete($concept_id)
+    {
+        Definition::where('concept_id',$concept_id)->delete();
+        Concept::find($concept_id)->delete();
+
+        DB::table('concept_quote')->where('concept_id', $concept_id)->delete();
+        DB::table('argument_concept')->where('concept_id', $concept_id)->delete();
+
+        return redirect('/concept/all')->with('alert', 'The concept has been deleted.');
+
+    }
+
+    public function delete_definition($concept_id, $definition_id)
+    {
+        $definition = Definition::find($definition_id);
+        $definition->delete();
+
+        $redirect_path = '/concept/single/' . $concept_id;
+
+        return redirect($redirect_path)->with('alert', 'The definition has been deleted.');
+
+    }
+
 }

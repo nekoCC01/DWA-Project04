@@ -55,6 +55,8 @@ Route::post('/quote/update/{quote_id}', 'QuoteController@update');
 Route::get('/quote/all', 'QuoteController@all');
 # View a single quote
 Route::get('/quote/single/{quote_id}', 'QuoteController@single');
+# Delete a quote
+Route::get('/quote/delete/{quote_id}', 'QuoteController@delete');
 /*
  * Bulding relations
  */
@@ -85,6 +87,10 @@ Route::post('/concept/definition/update/{definition_id}', 'ConceptController@upd
 Route::get('/concept/all', 'ConceptController@all');
 # View a single concept, with its definitions
 Route::get('/concept/single/{concept_id}', 'ConceptController@single');
+# Delete a concept
+Route::get('/concept/delete/{concept_id}', 'ConceptController@delete');
+# Delete a definition
+Route::get('/concept/delete_definition/{concept_id}/{definition_id}', 'ConceptController@delete_definition');
 /*
  * Bulding relations
  */
@@ -108,6 +114,8 @@ Route::post('/argument/update/{argument_id}', 'ArgumentController@update');
 Route::get('/argument/all', 'ArgumentController@all');
 # View a single argument
 Route::get('/argument/single/{argument_id}', 'ArgumentController@single');
+# Delete a argument
+Route::get('/argument/delete/{argument_id}', 'ArgumentController@delete');
 /*
  * Bulding relations
  */

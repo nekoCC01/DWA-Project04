@@ -210,4 +210,16 @@ class QuoteController extends Controller
         return redirect($redirect_path)->with('alert', 'The argument has been added.');
     }
 
+    public function delete($quote_id)
+    {
+        Quote::find($quote_id)->delete();
+
+        DB::table('argument_quote')->where('quote_id', $quote_id)->delete();
+        DB::table('concept_quote')->where('quote_id', $quote_id)->delete();
+
+        return redirect('/quote/all')->with('alert', 'The quote has been deleted.');
+
+    }
+
+
 }
