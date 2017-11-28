@@ -45,6 +45,29 @@
 
                 @endforeach
 
+
+
+                @if($showConceptForm)
+
+                    <form method='POST' action='/argument/store_concept/{{$selected_argument->id}}'>
+
+                        {{ csrf_field() }}
+
+                        <div class='form-group'>
+                            <select class='form-control' name='concept' id='concept'>
+                                <option value="">- Select a concept -</option>
+                                @foreach ($concepts as $concept)
+                                    <option value="{{$concept->id}}">{{$concept->concept}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Concept</button>
+                    </form>
+
+                @else
+                    <a href="/argument/add_concept/{{$selected_argument->id}}">Add another concept</a>
+                @endif
+
             </div>
         </div>
     </div>

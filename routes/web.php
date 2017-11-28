@@ -108,6 +108,13 @@ Route::post('/argument/update/{argument_id}', 'ArgumentController@update');
 Route::get('/argument/all', 'ArgumentController@all');
 # View a single argument
 Route::get('/argument/single/{argument_id}', 'ArgumentController@single');
-
-
+/*
+ * Bulding relations
+ */
+# relate to concept
+Route::get('/argument/add_concept/{argument_id}', 'ArgumentController@add_concept');
+Route::post('/argument/store_concept/{argument_id}', 'ArgumentController@store_concept');
+# relate to quote
+Route::get('/argument/add_quote/{argument_id}', 'ArgumentController@add_quote');
+Route::post('/argument/store_quote/{argument_id}', 'ArgumentController@store_quote');
 

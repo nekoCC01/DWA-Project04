@@ -7,6 +7,8 @@ use App\Concept;
 use App\Argument;
 use App\Philosopher;
 use App\Work;
+use App\Quote;
+use DB;
 
 class ArgumentController extends Controller
 {
@@ -24,8 +26,13 @@ class ArgumentController extends Controller
     {
         $selected_argument = Argument::find($argument_id);
 
+        $showConceptForm = false;
+        $showQuoteForm   = false;
+
         return view('argument.single')->with([
-            'selected_argument' => $selected_argument
+            'selected_argument' => $selected_argument,
+            'showConceptForm'   => $showConceptForm,
+            'showQuoteForm'     => $showQuoteForm
         ]);
     }
 
@@ -128,5 +135,36 @@ class ArgumentController extends Controller
         return redirect('/argument/all')->with('alert', 'The argument was edited.');
 
     }
+
+    public function add_concept($argument_id)
+    {
+        $selected_argument = Argument::find($argument_id);
+
+        $showConceptForm = true;
+        $showQuoteForm   = false;
+
+        $concepts = Concept::all();
+
+        return view('argument.single')->with([
+            'selected_argument' => $selected_argument,
+            'showConceptForm'   => $showConceptForm,
+            'showQuoteForm'     => $showQuoteForm,
+            'concepts'          => $concepts
+        ]);
+    }
+
+    public function store_concept(Request $request, $argument_id)
+    {
+        DB::table('argument_concept')->insert([
+            'argument_id' => $argument_id,
+            'concept_id'  => $request->input('concept')
+        ]);
+
+        $redirect_path = '/argument/single/' . $argument_id;
+
+        return redirect($redirect_path)->with('alert', 'The concept has been added.');
+
+    }
+
 
 }
