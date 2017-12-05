@@ -17,19 +17,27 @@ nav {
     background-color: #BE6229;
 }
 
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
 /*
 basic html elements
  */
 
 hr {
-    clear:both;
-    display:block;
+    clear: both;
+    display: block;
     width: 100%;
 
     border: 0;
     height: 1px;
     background: #333;
     background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+blockquote {
+    font-family: 'Playfair Display', serif;
 }
 
 /*
@@ -40,8 +48,11 @@ Adjustments to page elements & sections
     background-color: #9B4612;
     color: white;
     padding: 15px 10px 5px 10px;
-}
 
+    -webkit-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.26);
+    -moz-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.26);
+    box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.26);
+}
 
 /*
 Customized Bootstrap classes
@@ -57,6 +68,18 @@ Customized Bootstrap classes
     padding: 6px 20px;
 }
 
+.btn-primary {
+    background-color: #9B4612;
+    border-color: transparent;
+}
+
+.btn-primary:hover {
+    background-color: #632600;
+}
+
+.figure-caption {
+    color: #632600;
+}
 
 /*
 Custom classes
@@ -66,9 +89,11 @@ Custom classes
     background-color: cornsilk;
     padding: 30px;
 }
+
 .related {
     padding: 30px;
 }
+
 .all_content {
     margin-top: 25px;
 }
@@ -78,14 +103,14 @@ Custom classes
 }
 
 .alert {
-    background-color:yellow;
-    width:100%;
-    position:fixed;
-    top:0;
-    left:0;
-    padding:5px;
-    font-weight:bold;
-    text-align:center;
-    cursor:pointer;
+    background-color: yellow;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 5px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
     z-index: 10;
 }

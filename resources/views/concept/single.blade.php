@@ -87,14 +87,9 @@
 
 
                     @foreach ($selected_concept->quotes as $related_quote)
-                        <figure class="figure">
-                            <blockquote>
-                                {{$related_quote->quote}}
-                            </blockquote>
-                            <figcaption class="figure-caption">
-                                {{$related_quote->philosopher->name}}
-                            </figcaption>
-                        </figure>
+
+                        @include('modules.blogquote', ['content' => $related_quote->quote, 'attribution' => $related_quote->philosopher->name])
+
                         <a href="/quote/single/{{$related_quote->id}}">View</a> |
                         <a href="/concept/unlink/quote/{{$selected_concept->id}}/{{$related_quote->id}}">Unlink</a>
                         <hr>
@@ -125,14 +120,9 @@
                     @endif
 
                     @foreach ($selected_concept->arguments as $related_argument)
-                        <figure class="figure">
-                            <blockquote>
-                                {{$related_argument->title}}
-                            </blockquote>
-                            <figcaption class="figure-caption">
-                                {{$related_argument->philosopher->name}}
-                            </figcaption>
-                        </figure>
+
+                        @include('modules.blogquote', ['content' => $related_argument->title, 'attribution' => $related_argument->philosopher->name])
+
                         <a href="/argument/single/{{$related_argument->id}}">View</a> |
                         <a href="/concept/unlink/argument/{{$selected_concept->id}}/{{$related_argument->id}}">Unlink</a>
                         <hr>

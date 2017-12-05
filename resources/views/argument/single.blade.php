@@ -103,14 +103,8 @@
 
                 @foreach ($selected_argument->quotes as $related_quote)
 
-                    <figure class="figure">
-                        <blockquote>
-                            {{$related_quote->quote}}
-                        </blockquote>
-                        <figcaption class="figure-caption">
-                            {{$related_quote->philosopher->name}}
-                        </figcaption>
-                    </figure>
+                    @include('modules.blogquote', ['content' => $related_quote->quote, 'attribution' => $related_quote->philosopher->name])
+
                     <a href="/quote/single/{{$related_quote->id}}">View</a> /
                     <a href="/argument/unlink/quote/{{$selected_argument->id}}/{{$related_quote->id}}">Unlink</a>
                     <hr>

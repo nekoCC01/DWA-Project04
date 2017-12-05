@@ -12,14 +12,8 @@
 
 @section('featured_content')
 
-    <figure class="figure">
-        <blockquote>
-            {{$random_quote->quote}}
-        </blockquote>
-        <figcaption class="figure-caption">
-            {{$random_quote->philosopher->name}}
-        </figcaption>
-    </figure>
+    @include('modules.blogquote', ['content' => $random_quote->quote, 'attribution' => $random_quote->philosopher->name])
+
     <a href="/quote/single/{{$random_quote->philosopher->id}}">Link</a>
 
     <p><a class="btn btn-primary btn-sm" href="/quote/all" role="button">Another Random &raquo;</a></p>
@@ -36,16 +30,9 @@
 
             @foreach($quotes as $quote)
 
-                <figure class="figure">
-                    <a href="/quote/single/{{$quote->id}}" class="quote_link">
-                        <blockquote>
-                            {{$quote->quote}}
-                        </blockquote>
-                    </a>
-                    <figcaption class="figure-caption">
-                        {{$quote->philosopher->name}}
-                    </figcaption>
-                </figure>
+                @include('modules.blogquote', ['content' => $quote->quote, 'attribution' => $quote->philosopher->name])
+
+                <a href="/quote/single/{{$quote->id}}" class="quote_link">View</a> /
                 <a href="/quote/edit/{{$quote->id}}">Edit</a> /
                 <a href="/quote/delete/{{$quote->id}}">Delete</a>
                 <hr>

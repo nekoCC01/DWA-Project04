@@ -7,14 +7,7 @@
 
 @section('featured_content')
 
-    <figure class="figure">
-        <blockquote>
-            {{$random_quote->quote}}
-        </blockquote>
-        <figcaption class="figure-caption">
-            {{$random_quote->philosopher->name}}
-        </figcaption>
-    </figure>
+    @include('modules.blogquote', ['content' => $random_quote->quote, 'attribution' => $random_quote->philosopher->name])
 
 @endsection
 

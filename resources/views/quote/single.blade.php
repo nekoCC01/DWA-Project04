@@ -12,8 +12,7 @@
 
 @section('featured_content')
 
-    <p>{{$selected_quote->quote}}</p>
-    {{$selected_quote->philosopher->name}}
+    @include('modules.blogquote', ['content' => $selected_quote->quote, 'attribution' => $selected_quote->philosopher->name])
 
 @endsection
 
@@ -93,14 +92,12 @@
 
                 @foreach($selected_quote->arguments as $related_argument)
 
-                    <figure class="figure">
-                        <blockquote>
-                            {{$related_argument->assumption}} --> {{$related_argument->conclusion}}
-                        </blockquote>
-                        <figcaption class="figure-caption">
-                            {{$related_argument->philosopher->name}}
-                        </figcaption>
-                    </figure>
+                    @include('modules.blogquote', [
+                        'content' => $related_argument->assumption . " -> " . $related_argument->conclusion,
+                        'attribution' => $selected_quote->philosopher->name
+                    ])
+
+
                     <a href="/argument/single/{{$related_argument->id}}">View</a> |
                     <a href="/quote/unlink/argument/{{$selected_quote->id}}/{{$related_argument->id}}">Unlink</a>
                     <hr>

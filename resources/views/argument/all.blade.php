@@ -24,15 +24,12 @@
             @foreach ($arguments as $argument)
 
 
-                <figure class="figure">
-                    <h3>{{$argument->title}}</h3>
-                    <blockquote>
-                        {{$argument->assumption}} --> {{$argument->conclusion}}
-                    </blockquote>
-                    <figcaption class="figure-caption">
-                        {{$argument->philosopher->name}}
-                    </figcaption>
-                </figure>
+                <h3>{{$argument->title}}</h3>
+                @include('modules.blogquote', [
+                            'content' => $argument->assumption . " -> " . $argument->conclusion,
+                            'attribution' => $argument->philosopher->name
+                        ])
+
                 <a href="/argument/single/{{$argument->id}}">View</a> |
                 <a href="/argument/edit/{{$argument->id}}">Edit</a> |
                 <a href="/argument/delete/{{$argument->id}}">Delete</a>

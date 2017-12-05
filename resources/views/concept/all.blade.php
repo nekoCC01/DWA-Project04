@@ -62,6 +62,6 @@
 @push('body')
     <script type="text/javascript">
         $('.nav-item').removeClass('active');
-        $('#quotes').addClass('active');
+        $('#concepts').addClass('active');
     </script>
 @endpush
