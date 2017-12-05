@@ -10,34 +10,52 @@
 
 @endpush
 
-@section('featured_content')
-
-@endsection
 
 @section('content')
     <div class="container all_content">
 
-        <a href="/argument/create">Add new argument</a>
-
         <div class="row">
+            <p><a class="btn btn-primary btn-sm" href="/argument/create" role="button">Add new argument</a></p>
+            <hr>
+        </div>
+
 
             @foreach ($arguments as $argument)
 
 
-                <h3>{{$argument->title}}</h3>
-                @include('modules.blogquote', [
+
+
+
+                <div class="row">
+                    <h3>{{$argument->title}}</h3>
+                </div>
+                <div class="row">
+
+                    @include('modules.blogquote', [
                             'content' => $argument->assumption . " -> " . $argument->conclusion,
                             'attribution' => $argument->philosopher->name
                         ])
 
-                <a href="/argument/single/{{$argument->id}}">View</a> |
-                <a href="/argument/edit/{{$argument->id}}">Edit</a> |
-                <a href="/argument/delete/{{$argument->id}}">Delete</a>
-                <hr>
+                </div>
+                <div class="row">
+                    <br>
+                    <a href="/argument/single/{{$argument->id}}" class="icon">
+                        <img src="/img/view-icon.svg" alt="">
+                        View
+                    </a>
+                    <a href="/argument/edit/{{$argument->id}}" class="icon">
+                        <img src="/img/edit-icon.svg" alt="">
+                        Edit
+                    </a>
+                    <a href="/argument/delete/{{$argument->id}}" class="icon">
+                        <img src="/img/delete-icon.svg" alt="">
+                        Delete
+                    </a>
+                    <hr>
+                </div>
 
             @endforeach
-
-        </div>
+        
 
     </div>
 

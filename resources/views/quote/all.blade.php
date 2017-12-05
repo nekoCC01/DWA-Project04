@@ -12,34 +12,45 @@
 
 @section('featured_content')
 
-    @include('modules.blogquote', ['content' => $random_quote->quote, 'attribution' => $random_quote->philosopher->name])
+    <div class="old_paper">
+        @include('modules.blogquote', ['content' => $random_quote->quote, 'attribution' => $random_quote->philosopher->name])
 
-    <a href="/quote/single/{{$random_quote->philosopher->id}}">Link</a>
-
-    <p><a class="btn btn-primary btn-sm" href="/quote/all" role="button">Another Random &raquo;</a></p>
-
+        <p><a class="btn btn-primary btn-sm" href="/quote/all" role="button">Another Random &raquo;</a></p>
+    </div>
 @endsection
 
 @section('content')
     <div class="container all_content">
 
 
-        <a href="/quote/create">Add new quote</a>
-
         <div class="row">
-
-            @foreach($quotes as $quote)
+            <p><a class="btn btn-primary btn-sm" href="/quote/create" role="button">Add new quote</a></p>
+            <hr>
+        </div>
+        @foreach($quotes as $quote)
+            <div class="row">
 
                 @include('modules.blogquote', ['content' => $quote->quote, 'attribution' => $quote->philosopher->name])
 
-                <a href="/quote/single/{{$quote->id}}" class="quote_link">View</a> /
-                <a href="/quote/edit/{{$quote->id}}">Edit</a> /
-                <a href="/quote/delete/{{$quote->id}}">Delete</a>
+            </div>
+            <div class="row">
+                <br>
+                <a href="/quote/single/{{$quote->id}}" class="icon">
+                    <img src="/img/view-icon.svg" alt="">
+                    View
+                </a>
+                <a href="/quote/edit/{{$quote->id}}" class="icon">
+                    <img src="/img/edit-icon.svg" alt="">
+                    Edit
+                </a>
+                <a href="/quote/delete/{{$quote->id}}" class="icon">
+                    <img src="/img/delete-icon.svg" alt="">
+                    Delete
+                </a>
                 <hr>
+            </div>
 
-            @endforeach
-
-        </div>
+        @endforeach
 
     </div>
 

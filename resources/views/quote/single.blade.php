@@ -12,8 +12,9 @@
 
 @section('featured_content')
 
-    @include('modules.blogquote', ['content' => $selected_quote->quote, 'attribution' => $selected_quote->philosopher->name])
-
+    <div class="old_paper">
+        @include('modules.blogquote', ['content' => $selected_quote->quote, 'attribution' => $selected_quote->philosopher->name])
+    </div>
 @endsection
 
 @section('content')
@@ -30,32 +31,39 @@
                 @foreach ($selected_quote->concepts as $related_concept)
                     <a href="/concept/single/{{$related_concept->id}}"><span
                                 class="badge badge-secondary">{{$related_concept->concept}}</span></a>
-                    <a href="/quote/unlink/concept/{{$selected_quote->id}}/{{$related_concept->id}}">Unlink</a>
+                    <a href="/quote/unlink/concept/{{$selected_quote->id}}/{{$related_concept->id}}" class="icon small">
+                        <img src="/img/unlink-icon.svg" alt="">
+                    </a>
                 @endforeach
-
-                @if($showConceptForm)
-
-                    <form method='POST' action='/quote/store_concept/{{$selected_quote->id}}'>
-
-                        {{ csrf_field() }}
-
-                        <div class='form-group'>
-                            <select class='form-control' name='concept' id='concept'>
-                                <option value="">- Select a concept -</option>
-                                @foreach ($concepts as $concept)
-                                    <option value="{{$concept->id}}">{{$concept->concept}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Add Concept</button>
-                    </form>
-
-                @else
-                    <a href="/quote/add_concept/{{$selected_quote->id}}">Add another concept</a>
-                @endif
-
-
             </div>
+
+            @if($showConceptForm)
+
+                <form method='POST' action='/quote/store_concept/{{$selected_quote->id}}'>
+
+                    {{ csrf_field() }}
+
+                    <div class='form-group'>
+                        <select class='form-control' name='concept' id='concept'>
+                            <option value="">- Select a concept -</option>
+                            @foreach ($concepts as $concept)
+                                <option value="{{$concept->id}}">{{$concept->concept}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Concept</button>
+                </form>
+
+            @else
+                <div class="row">
+                    <hr>
+                    <p><a class="btn btn-primary btn-sm" href="/quote/add_concept/{{$selected_quote->id}}"
+                          role="button">Link to another concept</a></p>
+                </div>
+
+            @endif
+
+
         </div>
     </div>
 
@@ -65,46 +73,59 @@
 
             <div class="row">
                 <h2>Related Arguments</h2>
+            </div>
+            @if ($showArgumentForm)
+                <form method='POST' action='/quote/store_argument/{{$selected_quote->id}}'>
+
+                    {{ csrf_field() }}
+
+                    <div class='form-group'>
+                        <select class='form-control' name='argument' id='argument'>
+                            <option value="">- Select an argument -</option>
+                            @foreach ($arguments as $argument)
+                                <option value="{{$argument->id}}">{{$argument->title}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Argument</button>
+                </form>
+
+            @else
+                <div class="row">
+                    <p><a class="btn btn-primary btn-sm" href="/quote/add_argument/{{$selected_quote->id}}"
+                          role="button">Link to another argument</a></p>
+                    <hr>
+                </div>
+
+            @endif
 
 
-                @if ($showArgumentForm)
-                    <form method='POST' action='/quote/store_argument/{{$selected_quote->id}}'>
 
-                        {{ csrf_field() }}
+            @foreach($selected_quote->arguments as $related_argument)
 
-                        <div class='form-group'>
-                            <select class='form-control' name='argument' id='argument'>
-                                <option value="">- Select an argument -</option>
-                                @foreach ($arguments as $argument)
-                                    <option value="{{$argument->id}}">{{$argument->title}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Add Argument</button>
-                    </form>
-
-                @else
-                    <a href="/quote/add_argument/{{$selected_quote->id}}">Add another argument</a>
-
-                @endif
-
-
-
-                @foreach($selected_quote->arguments as $related_argument)
-
+                <div class="row">
                     @include('modules.blogquote', [
                         'content' => $related_argument->assumption . " -> " . $related_argument->conclusion,
                         'attribution' => $selected_quote->philosopher->name
                     ])
+                </div>
 
-
-                    <a href="/argument/single/{{$related_argument->id}}">View</a> |
-                    <a href="/quote/unlink/argument/{{$selected_quote->id}}/{{$related_argument->id}}">Unlink</a>
+                <div class="row">
+                    <br>
+                    <a href="/argument/single/{{$related_argument->id}}" class="icon">
+                        <img src="/img/view-icon.svg" alt="">
+                        View
+                    </a>
+                    <a href="/quote/unlink/argument/{{$selected_quote->id}}/{{$related_argument->id}}" class="icon">
+                        <img src="/img/unlink-icon.svg" alt="">
+                        Unlink
+                    </a>
                     <hr>
+                </div>
 
-                @endforeach
+            @endforeach
 
-            </div>
+
         </div>
     </div>
 

@@ -29,10 +29,19 @@
                     </form>
                 @else
                     <h3><span class="badge badge-secondary">{{$selected_concept->concept}}</span></h3>
-                    <a href="/concept/edit/{{$selected_concept->id}}">Edit Concept</a>
+
+                    <a href="/concept/edit/{{$selected_concept->id}}" class="icon">
+                        <img src="/img/edit-icon.svg" alt="">
+                        Edit
+                    </a>
+
+
                 @endif
 
-                <a href="/concept/delete/{{$selected_concept->id}}">Delete</a>
+                <a href="/concept/delete/{{$selected_concept->id}}" class="icon">
+                    <img src="/img/delete-icon.svg" alt="">
+                    Delete
+                </a>
 
             </div>
             <div class="row">
@@ -42,7 +51,7 @@
                     @foreach ($selected_concept->definitions as $definition)
                         <li>
                             {{$definition->definition}} <br>
-                            by {{$definition->philosopher->name}}
+                            <i>by {{$definition->philosopher->name}}</i>
                             <a href="/concept/edit_definition/{{$definition->id}}">Edit</a> /
                             <a href="/concept/delete_definition/{{$selected_concept->id}}/{{$definition->id}}">Delete</a>
                         </li>
@@ -50,7 +59,11 @@
                 </ul>
             </div>
             <!-- TODO pass the value of $selected_concept->id so that it is available to the form and can be passed as a hidden input from there -->
-            <a href="/concept/create_definition">Create a new definition</a>
+            <div class="row">
+                <hr>
+                <p><a class="btn btn-primary btn-sm" href="/concept/create_definition" role="button">Create a new
+                        definition</a></p>
+            </div>
         </div>
     </div>
 
@@ -62,8 +75,10 @@
         <div class="container">
 
             <div class="row">
-                <div class="col">
-                    <h3>Related Quotes</h3>
+                <div class="col-5">
+                    <div class="row">
+                        <h2>Related Quotes</h2>
+                    </div>
 
                     @if($showQuoteForm)
                         <form method='POST' action='/concept/store_quote/{{$selected_concept->id}}'>
@@ -81,24 +96,49 @@
                             <button type="submit" class="btn btn-primary">Add Quote</button>
                         </form>
                     @else
-                        <a href="/concept/add_quote/{{$selected_concept->id}}">Add another quote</a>
+                        <div class="row">
+                            <p><a class="btn btn-primary btn-sm" href="/concept/add_quote/{{$selected_concept->id}}"
+                                  role="button">Link to another quote</a></p>
+                            <hr>
+                        </div>
+
                     @endif
 
 
 
                     @foreach ($selected_concept->quotes as $related_quote)
 
-                        @include('modules.blogquote', ['content' => $related_quote->quote, 'attribution' => $related_quote->philosopher->name])
 
-                        <a href="/quote/single/{{$related_quote->id}}">View</a> |
-                        <a href="/concept/unlink/quote/{{$selected_concept->id}}/{{$related_quote->id}}">Unlink</a>
-                        <hr>
+                        <div class="row">
+                            @include('modules.blogquote', ['content' => $related_quote->quote, 'attribution' => $related_quote->philosopher->name])
+
+                        </div>
+
+                        <div class="row">
+                            <br>
+                            <a href="/quote/single/{{$related_quote->id}}" class="icon">
+                                <img src="/img/view-icon.svg" alt="">
+                                View
+                            </a>
+                            <a href="/concept/unlink/quote/{{$selected_concept->id}}/{{$related_quote->id}}"
+                               class="icon">
+                                <img src="/img/unlink-icon.svg" alt="">
+                                Unlink
+                            </a>
+                            <hr>
+                        </div>
+
+
+
                     @endforeach
 
                 </div>
-                <div class="col">
+                <div class="col"></div>
+                <div class="col-5">
 
-                    <h3>Related Arguments</h3>
+                    <div class="row">
+                        <h2>Related Arguments</h2>
+                    </div>
 
                     @if($showArgumentForm)
                         <form method='POST' action='/concept/store_argument/{{$selected_concept->id}}'>
@@ -116,16 +156,34 @@
                             <button type="submit" class="btn btn-primary">Add Argument</button>
                         </form>
                     @else
-                        <a href="/concept/add_argument/{{$selected_concept->id}}">Add another argument</a>
+                        <div class="row">
+                            <p><a class="btn btn-primary btn-sm" href="/concept/add_argument/{{$selected_concept->id}}"
+                                  role="button">Link to another argument</a></p>
+                            <hr>
+                        </div>
                     @endif
 
                     @foreach ($selected_concept->arguments as $related_argument)
 
-                        @include('modules.blogquote', ['content' => $related_argument->title, 'attribution' => $related_argument->philosopher->name])
+                        <div class="row">
+                            @include('modules.blogquote', ['content' => $related_argument->title, 'attribution' => $related_argument->philosopher->name])
 
-                        <a href="/argument/single/{{$related_argument->id}}">View</a> |
-                        <a href="/concept/unlink/argument/{{$selected_concept->id}}/{{$related_argument->id}}">Unlink</a>
-                        <hr>
+                        </div>
+
+                        <div class="row">
+                            <br>
+                            <a href="/argument/single/{{$related_argument->id}}" class="icon">
+                                <img src="/img/view-icon.svg" alt="">
+                                View
+                            </a>
+                            <a href="/concept/unlink/argument/{{$selected_concept->id}}/{{$related_argument->id}}"
+                               class="icon">
+                                <img src="/img/unlink-icon.svg" alt="">
+                                Unlink
+                            </a>
+                            <hr>
+                        </div>
+
                     @endforeach
 
                 </div>

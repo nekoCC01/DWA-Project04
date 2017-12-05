@@ -38,7 +38,8 @@
                         {{ csrf_field() }}
 
                         <div class='form-group'>
-                            <input type='text' class='form-control' name='concept' id='concept' placeholder='Enter concept'
+                            <input type='text' class='form-control' name='concept' id='concept'
+                                   placeholder='Enter concept'
                                    value='{{ old('concept', '') }}'>
                             @include('modules.error-field', ['fieldName' => 'concept'])
                         </div>
@@ -49,7 +50,11 @@
                     </form>
                 </div>
             @else
-                <a href="/concept/create">Add new concept</a>
+                <div class="row">
+                    <hr>
+                    <p><a class="btn btn-primary btn-sm" href="/concept/create" role="button">Add new concept</a></p>
+
+                </div>
             @endif
 
 
