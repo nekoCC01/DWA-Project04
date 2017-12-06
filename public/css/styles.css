@@ -40,7 +40,6 @@ blockquote {
     font-family: 'Playfair Display', serif;
 }
 
-
 /*
 Adjustments to page elements & sections
  */
@@ -89,6 +88,7 @@ Customized Bootstrap classes
 .figure-caption {
     color: #632600;
 }
+
 .badge-secondary {
     background-color: #BE6229;
     margin-right: 10px;
@@ -153,13 +153,16 @@ Custom classes
     text-align: center;
     color: #9B4612;
 }
+
 .icon img {
     width: inherit;
     display: block;
 }
+
 .icon img:hover {
     -webkit-filter: hue-rotate(10deg) saturate(2);
 }
+
 .icon * {
     margin: auto;
 }
@@ -167,4 +170,12 @@ Custom classes
 .small {
     width: 20px;
     margin-right: 30px;
+}
+
+.form_inline {
+    background-color: #e5dec2;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    margin-top: 5px;
 }

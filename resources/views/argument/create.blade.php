@@ -16,69 +16,34 @@
                 {{ csrf_field() }}
 
                 <small class='form-text text-muted'>* Required fields</small>
+                <hr>
 
                 <div class='form-group'>
                     <label for='title'>* Title</label>
-                    <input type='text' class='form-control' name='title' id='title' placeholder='Enter Title'
-                           value='{{ old('title', '') }}'>
+                    <input type='text' class='form-control' name='title' id='title'
+                           value='{{ old('title'),'' }}'>
                     @include('modules.error-field', ['fieldName' => 'title'])
                 </div>
 
-                <div class='form-group'>
-                    <label for='assumption'>* Assumption</label>
-                    <input type='text' class='form-control' name='assumption' id='assumption' placeholder='Enter Assumption'
-                           value='{{ old('assumption', '') }}'>
+                <div class="form-group">
+                    <label for="assumption">* Assumption:</label>
+                    <textarea class="form-control" name="assumption" id="assumption" rows="3">{{ old('assumption'),'' }}</textarea>
                     @include('modules.error-field', ['fieldName' => 'assumption'])
                 </div>
 
-                <div class='form-group'>
-                    <label for='conclusion'>* Conclusion</label>
-                    <input type='text' class='form-control' name='conclusion' id='conclusion' placeholder='Enter Conclusion'
-                           value='{{ old('conclusion', '') }}'>
-                    @include('modules.error-field', ['fieldName' => 'conclusion'])
+                <div class="form-group">
+                    <label for="conclusion">* Conclusion:</label>
+                    <textarea class="form-control" name="conclusion" id="conclusion" rows="3">{{ old('conclusion'),'' }}</textarea>
                 </div>
 
-                <!--TODO Das Zusatz-Fieldset evtl auslagern als Sub-View -->
-                <div class='form-group'> Philosopher Pulldown
-                    <select class='form-control' name='philosopher' id='philosopher'>
-                        <option value="">- Select a philosopher -</option>
-                        @foreach ($philosophers as $philosopher)
-                            <option value="{{$philosopher->id}}">{{$philosopher->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class='form-group'> Works Pulldown
-                    <select class='form-control' name='work' id='work'>
-                        <option value="">- Select a work -</option>
-                        @foreach ($works as $work)
-                            <option value="{{$work->id}}">{{$work->title}}</option>
-                        @endforeach
-                    </select>
-                </div>
+                @include('form.pulldown-philosopher-work', [
+                    'entry' => 'none'
+                ])
 
-                <hr>
-                <div> Do you want to enter a new philosopher or a work?
-                    <br/>
-                    <input class="form-check-input" type="radio" name="want" id="pd_yes" value="yes"/>
-                    <label class="form-check-label" for="pd_yes">Yes</label>
-                    <br/>
-                    <input class="form-check-input" type="radio" name="want" id="pd_no" value="no"/>
-                    <label class="form-check-label" for="pd_no">No</label>
-                </div>
-                <fieldset id="philosopher_work_input">
-                    <div class="form-group">
-                        <label for="philosopher">Philosopher: </label>
-                        <input class='form-control' type="text" name="philosopher_new" id="philosopher_new">
-                    </div>
-                    <div class="form-group">
-                        <label for="philosopher">Work: </label>
-                        <input class='form-control' type="text" name="work_new" id="work_new">
-                    </div>
-
-                </fieldset>
-                <hr>
+                @include('form.new-philosopher-work')
 
                 <button type="submit" class="btn btn-primary">Add Argument</button>
+                <br><br>
             </form>
 
         </div>

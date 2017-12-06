@@ -102,11 +102,16 @@ class ConceptController extends Controller
     {
         $selected_concept = Concept::find($concept_id);
         $edit_concept     = true;
+        $showQuoteForm    = false;
+        $showArgumentForm = false;
 
         return view('concept.single')->with([
             'selected_concept' => $selected_concept,
-            'edit_concept'     => $edit_concept
+            'edit_concept'     => $edit_concept,
+            'showQuoteForm'    => $showQuoteForm,
+            'showArgumentForm' => $showArgumentForm
         ]);
+
     }
 
     public function update(Request $request, $concept_id)

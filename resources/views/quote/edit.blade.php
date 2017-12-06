@@ -19,14 +19,19 @@
                 <hr>
 
                 <div class="form-group">
-                    <label for="quote">Example textarea</label>
+                    <label for="quote">* Quote: </label>
                     <textarea class="form-control" name="quote" id="quote" rows="3">{{ old('quote', $quote->quote) }}</textarea>
+                    @include('modules.error-field', ['fieldName' => 'title'])
                 </div>
 
 
-                @include('form.check-language')
+                @include('form.check-language', [
+                    'entry' => $quote
+                ])
 
-                @include('form.pulldown-philosopher-work')
+                @include('form.pulldown-philosopher-work', [
+                    'entry' => $quote
+                ])
 
                 @include('form.new-philosopher-work')
 

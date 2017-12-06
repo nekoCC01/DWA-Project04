@@ -1,11 +1,16 @@
 <hr>
 <div> Do you want to enter a new philosopher or a work?
     <br/>
-    <input class="form-check-input" type="radio" name="want" id="pd_yes" value="yes"/>
-    <label class="form-check-label" for="pd_yes">Yes</label>
-    <br/>
-    <input class="form-check-input" type="radio" name="want" id="pd_no" value="no"/>
-    <label class="form-check-label" for="pd_no">No</label>
+    <div class="form-check">
+        <label class="form-check-label" for="pd_yes">
+            <input class="form-check-input" type="radio" name="want" id="pd_yes" value="yes"/>
+            Yes
+        </label>
+        <br/>
+        <label class="form-check-label" for="pd_no">
+            <input class="form-check-input" type="radio" name="want" id="pd_no" value="no"/>
+            No</label>
+    </div>
 </div>
 <fieldset id="philosopher_work_input">
     <div class="form-group">

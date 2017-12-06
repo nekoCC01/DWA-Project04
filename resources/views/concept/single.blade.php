@@ -17,7 +17,7 @@
             <div class="row">
 
                 @if($edit_concept)
-                    <form action="/concept/update/{{$selected_concept->id}}" method="POST">
+                    <form class="form_inline" action="/concept/update/{{$selected_concept->id}}" method="POST">
 
                         {{ csrf_field() }}
 
@@ -34,8 +34,6 @@
                         <img src="/img/edit-icon.svg" alt="">
                         Edit
                     </a>
-
-
                 @endif
 
                 <a href="/concept/delete/{{$selected_concept->id}}" class="icon">
@@ -81,7 +79,7 @@
                     </div>
 
                     @if($showQuoteForm)
-                        <form method='POST' action='/concept/store_quote/{{$selected_concept->id}}'>
+                        <form class="form_inline" method='POST' action='/concept/store_quote/{{$selected_concept->id}}'>
 
                             {{ csrf_field() }}
 
@@ -95,6 +93,7 @@
                             </div>
                             <button type="submit" class="btn btn-primary">Add Quote</button>
                         </form>
+                        <hr>
                     @else
                         <div class="row">
                             <p><a class="btn btn-primary btn-sm" href="/concept/add_quote/{{$selected_concept->id}}"
@@ -141,7 +140,7 @@
                     </div>
 
                     @if($showArgumentForm)
-                        <form method='POST' action='/concept/store_argument/{{$selected_concept->id}}'>
+                        <form class="form_inline" method='POST' action='/concept/store_argument/{{$selected_concept->id}}'>
 
                             {{ csrf_field() }}
 

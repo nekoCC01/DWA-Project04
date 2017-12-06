@@ -39,21 +39,22 @@
 
             @if($showConceptForm)
 
-                <form method='POST' action='/quote/store_concept/{{$selected_quote->id}}'>
+                <div class="row">
+                    <form class="form_inline" method='POST' action='/quote/store_concept/{{$selected_quote->id}}'>
 
-                    {{ csrf_field() }}
+                        {{ csrf_field() }}
 
-                    <div class='form-group'>
-                        <select class='form-control' name='concept' id='concept'>
-                            <option value="">- Select a concept -</option>
-                            @foreach ($concepts as $concept)
-                                <option value="{{$concept->id}}">{{$concept->concept}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Add Concept</button>
-                </form>
-
+                        <div class='form-group'>
+                            <select class='form-control' name='concept' id='concept'>
+                                <option value="">- Select a concept -</option>
+                                @foreach ($concepts as $concept)
+                                    <option value="{{$concept->id}}">{{$concept->concept}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Concept</button>
+                    </form>
+                </div>
             @else
                 <div class="row">
                     <hr>
@@ -75,21 +76,22 @@
                 <h2>Related Arguments</h2>
             </div>
             @if ($showArgumentForm)
-                <form method='POST' action='/quote/store_argument/{{$selected_quote->id}}'>
+                <div class="row">
+                    <form class="form_inline" method='POST' action='/quote/store_argument/{{$selected_quote->id}}'>
 
-                    {{ csrf_field() }}
+                        {{ csrf_field() }}
 
-                    <div class='form-group'>
-                        <select class='form-control' name='argument' id='argument'>
-                            <option value="">- Select an argument -</option>
-                            @foreach ($arguments as $argument)
-                                <option value="{{$argument->id}}">{{$argument->title}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Add Argument</button>
-                </form>
-
+                        <div class='form-group'>
+                            <select class='form-control' name='argument' id='argument'>
+                                <option value="">- Select an argument -</option>
+                                @foreach ($arguments as $argument)
+                                    <option value="{{$argument->id}}">{{$argument->title}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Argument</button>
+                    </form>
+                </div>
             @else
                 <div class="row">
                     <p><a class="btn btn-primary btn-sm" href="/quote/add_argument/{{$selected_quote->id}}"
