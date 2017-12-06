@@ -29,13 +29,13 @@ class QuotesTableSeeder extends Seeder
                 'Perhaps the simplest and most important point about ethics is purely logical. I mean the impossibility to derive non-tautological ethical rules … from statements of facts.',
                 'English',
                 4,
-                3
+                null
             ],
             [
                 'Behold! human beings living in an underground den... Like ourselves... they see only their own shadows, ro the shadows of one antoher, which the fire throws on the opposite wall of the cave.',
                 'English',
                 8,
-                null
+                3
             ]
         ];
 

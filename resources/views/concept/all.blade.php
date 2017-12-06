@@ -32,7 +32,7 @@
             @if($showForm)
                 <div class="row">
 
-                    <form method='POST' action='/concept'>
+                    <form class="form_inline" method='POST' action='/concept'>
 
                         {{ csrf_field() }}
 
@@ -42,8 +42,6 @@
                                    value='{{ old('concept', '') }}'>
                             @include('modules.error-field', ['fieldName' => 'concept'])
                         </div>
-
-                        <hr>
 
                         <button type="submit" class="btn btn-primary">Add Concept</button>
                     </form>
