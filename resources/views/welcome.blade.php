@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
-@push('head')
-
-@endpush
+@section('current_position')
+    Home
+@endsection
 
 
 @section('featured_content')

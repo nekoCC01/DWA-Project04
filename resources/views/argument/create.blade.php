@@ -2,9 +2,12 @@
 
 
 @section('title')
-    Add an arguments
+    Add an argument
 @endsection
 
+@section('current_position')
+    Arguments > Add an argument
+@endsection
 
 @section('content')
 

@@ -6,9 +6,9 @@
 @endsection
 
 
-@push('head')
-
-@endpush
+@section('current_position')
+    Concepts > Detail View
+@endsection
 
 @section('featured_content')
 

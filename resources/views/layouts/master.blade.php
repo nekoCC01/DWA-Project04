@@ -51,7 +51,7 @@
         </div>
     </nav>
     <div class="container-fluid" id="youarehere">
-        Current position
+        @yield('current_position')
     </div>
 </header>
 

@@ -5,6 +5,9 @@
     Edit a quote
 @endsection
 
+@section('current_position')
+    Quotes > Edit a quote
+@endsection
 
 @section('content')
 

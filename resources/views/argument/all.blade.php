@@ -5,10 +5,9 @@
     Quote all
 @endsection
 
-
-@push('head')
-
-@endpush
+@section('current_position')
+    Arguments
+@endsection
 
 
 @section('content')

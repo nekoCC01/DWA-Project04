@@ -5,6 +5,9 @@
     Add a definition
 @endsection
 
+@section('current_position')
+    Concepts > Edit a definition
+@endsection
 
 @section('content')
 
@@ -28,7 +31,7 @@
 
                 @include('form.new-philosopher-work')
 
-                <button type="submit" class="btn btn-primary">Add Definition</button>
+                <button type="submit" class="btn btn-primary">Save Definition</button>
                 <br><br>
             </form>
 

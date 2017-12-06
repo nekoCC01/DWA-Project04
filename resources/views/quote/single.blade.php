@@ -5,10 +5,9 @@
     Quote single
 @endsection
 
-
-@push('head')
-
-@endpush
+@section('current_position')
+    Quotes > Detail View
+@endsection
 
 @section('featured_content')
 
