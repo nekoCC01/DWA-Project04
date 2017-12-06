@@ -15,16 +15,18 @@
 
 
     <div class="old_paper">
-        <h2>{{$selected_argument->title}}</h2>
-        <div class="row justify-content-md-center">
-            <div class="col col-lg-2">
+        <div class="row">
+            <h2>{{$selected_argument->title}}</h2>
+        </div>
+        <div class="row">
+            <div class="col-5">
                 {{$selected_argument->assumption}}
             </div>
-            <div class="col-md-auto">
-                <img src="/img/arrow_right.png"
-                     alt="" width="20%">
+            <div class="col-2">
+                <img src="/img/argument_arrow.svg"
+                     alt="">
             </div>
-            <div class="col col-lg-2">
+            <div class="col-5">
                 {{$selected_argument->conclusion}}
             </div>
         </div>

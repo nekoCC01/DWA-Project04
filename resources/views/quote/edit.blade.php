@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Add a quote
+    Edit a quote
 @endsection
 
 
@@ -16,13 +16,15 @@
                 {{ csrf_field() }}
 
                 <small class='form-text text-muted'>* Required fields</small>
+                <hr>
 
-                <div class='form-group'>
-                    <label for='quote'>* Quote</label>
-                    <input type='text' class='form-control' name='quote' id='quote' placeholder='Enter Quote'
-                           value='{{ old('quote', $quote->quote) }}'>
-                    @include('modules.error-field', ['fieldName' => 'title'])
+                <div class="form-group">
+                    <label for="quote">Example textarea</label>
+                    <textarea class="form-control" id="quote" rows="3">
+                        {{ old('quote', $quote->quote) }}
+                    </textarea>
                 </div>
+
 
                 <div class="form-check">
                     <label class="form-check-label">
@@ -42,7 +44,7 @@
                         French
                     </label>
                 </div>
-                <div class='form-group'> Philosopher Pulldown
+                <div class='form-group'>* Philosopher Pulldown
                     <select class='form-control' name='philosopher' id='philosopher'>
                         <option value="">- Select a philosopher -</option>
                         @foreach ($philosophers as $philosopher)
@@ -82,6 +84,7 @@
                 <hr>
 
                 <button type="submit" class="btn btn-primary">Save Quote</button>
+                <br><br>
             </form>
 
         </div>
