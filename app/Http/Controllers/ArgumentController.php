@@ -9,9 +9,13 @@ use App\Philosopher;
 use App\Work;
 use App\Quote;
 use DB;
+use App\Traits\CustomFormActions;
 
 class ArgumentController extends Controller
 {
+
+    use CustomFormActions;
+
     public function all()
     {
 
@@ -50,36 +54,15 @@ class ArgumentController extends Controller
 
     public function store(Request $request)
     {
-
         $argument             = new Argument();
         $argument->title      = $request->input('title');
         $argument->assumption = $request->input('assumption');
         $argument->conclusion = $request->input('conclusion');
 
-        if ($request->input('philosopher_new') != '') {
+        $work        = new Work();
+        $philosopher = new Philosopher();
+        $this->store_new_philosopher_work($request, $philosopher, $work, $argument);
 
-            $philosopher       = new Philosopher();
-            $philosopher->name = $request->input('philosopher_new');
-            $philosopher->save();
-            $philosopher_id = $philosopher->id;
-        } else {
-            $philosopher_id = $request->input('philosopher');
-
-            if ($request->input('philosopher') == '') {
-                //TODO pass message: Either choose a philosopher or enter a new one
-            }
-        }
-        $argument->philosopher_id = $philosopher_id;
-
-        if ($request->input('work_new') != '') {
-            $work                 = new Work();
-            $work->title          = $request->input('work_new');
-            $work->philosopher_id = $philosopher_id;
-            $work->save();
-            $argument->work_id = $work->id;
-        } else {
-            $argument->work_id = $request->input('work');
-        }
         $argument->save();
 
         return redirect('/argument/all')->with('alert', 'The argument was added.');
@@ -106,30 +89,10 @@ class ArgumentController extends Controller
         $argument->assumption = $request->input('assumption');
         $argument->conclusion = $request->input('conclusion');
 
-        if ($request->input('philosopher_new') != '') {
+        $work        = new Work();
+        $philosopher = new Philosopher();
+        $this->store_new_philosopher_work($request, $philosopher, $work, $argument);
 
-            $philosopher       = new Philosopher();
-            $philosopher->name = $request->input('philosopher_new');
-            $philosopher->save();
-            $philosopher_id = $philosopher->id;
-        } else {
-            $philosopher_id = $request->input('philosopher');
-
-            if ($request->input('philosopher') == '') {
-                //TODO pass message: Either choose a philosopher or enter a new one
-            }
-        }
-        $argument->philosopher_id = $philosopher_id;
-
-        if ($request->input('work_new') != '') {
-            $work                 = new Work();
-            $work->title          = $request->input('work_new');
-            $work->philosopher_id = $philosopher_id;
-            $work->save();
-            $argument->work_id = $work->id;
-        } else {
-            $argument->work_id = $request->input('work');
-        }
         $argument->save();
 
         return redirect('/argument/all')->with('alert', 'The argument was edited.');

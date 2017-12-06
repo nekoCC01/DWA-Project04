@@ -9,10 +9,12 @@ use App\Work;
 use App\Concept;
 use App\Argument;
 use DB;
+use App\Traits\CustomFormActions;
 
 class QuoteController extends Controller
 {
 
+    use CustomFormActions;
 
     public function all()
     {
@@ -70,30 +72,10 @@ class QuoteController extends Controller
         $quote->quote    = $request->input('quote');
         $quote->language = $request->input('language');
 
-        if ($request->input('philosopher_new') != '') {
+        $work        = new Work();
+        $philosopher = new Philosopher();
+        $this->store_new_philosopher_work($request, $philosopher, $work, $quote);
 
-            $philosopher       = new Philosopher();
-            $philosopher->name = $request->input('philosopher_new');
-            $philosopher->save();
-            $philosopher_id = $philosopher->id;
-        } else {
-            $philosopher_id = $request->input('philosopher');
-
-            if ($request->input('philosopher') == '') {
-                //TODO pass message: Either choose a philosopher or enter a new one
-            }
-        }
-        $quote->philosopher_id = $philosopher_id;
-
-        if ($request->input('work_new') != '') {
-            $work                 = new Work();
-            $work->title          = $request->input('work_new');
-            $work->philosopher_id = $philosopher_id;
-            $work->save();
-            $quote->work_id = $work->id;
-        } else {
-            $quote->work_id = $request->input('work');
-        }
         $quote->save();
 
         return redirect('/quote/all')->with('alert', 'The quote was added.');
@@ -121,31 +103,9 @@ class QuoteController extends Controller
         $quote->language = $request->input('language');
 
 
-
-        if ($request->input('philosopher_new') != '') {
-
-            $philosopher       = new Philosopher();
-            $philosopher->name = $request->input('philosopher_new');
-            $philosopher->save();
-            $philosopher_id = $philosopher->id;
-        } else {
-            $philosopher_id = $request->input('philosopher');
-
-            if ($request->input('philosopher') == '') {
-                //TODO pass message: Either choose a philosopher or enter a new one
-            }
-        }
-        $quote->philosopher_id = $philosopher_id;
-
-        if ($request->input('work_new') != '') {
-            $work                 = new Work();
-            $work->title          = $request->input('work_new');
-            $work->philosopher_id = $philosopher_id;
-            $work->save();
-            $quote->work_id = $work->id;
-        } else {
-            $quote->work_id = $request->input('work');
-        }
+        $work        = new Work();
+        $philosopher = new Philosopher();
+        $this->store_new_philosopher_work($request, $philosopher, $work, $quote);
 
         $quote->save();
 
@@ -235,5 +195,6 @@ class QuoteController extends Controller
 
         return redirect($redirect_path)->with('alert', $message);
     }
+
 
 }

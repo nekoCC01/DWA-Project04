@@ -10,12 +10,15 @@ use App\Philosopher;
 use App\Work;
 use App\Quote;
 use DB;
+use App\Traits\CustomFormActions;
 
 class ConceptController extends Controller
 {
+
+    use CustomFormActions;
+
     public function all()
     {
-
         $concepts = Concept::all();
         $showForm = false;
 
@@ -83,30 +86,10 @@ class ConceptController extends Controller
         $definition->definition = $request->input('definition');
         $definition->concept_id = $request->input('concept_id');
 
-        if ($request->input('philosopher_new') != '') {
+        $work        = new Work();
+        $philosopher = new Philosopher();
+        $this->store_new_philosopher_work($request, $philosopher, $work, $definition);
 
-            $philosopher       = new Philosopher();
-            $philosopher->name = $request->input('philosopher_new');
-            $philosopher->save();
-            $philosopher_id = $philosopher->id;
-        } else {
-            $philosopher_id = $request->input('philosopher');
-
-            if ($request->input('philosopher') == '') {
-                //TODO pass message: Either choose a philosopher or enter a new one
-            }
-        }
-        $definition->philosopher_id = $philosopher_id;
-
-        if ($request->input('work_new') != '') {
-            $work                 = new Work();
-            $work->title          = $request->input('work_new');
-            $work->philosopher_id = $philosopher_id;
-            $work->save();
-            $definition->work_id = $work->id;
-        } else {
-            $definition->work_id = $request->input('work');
-        }
         $definition->save();
 
         $redirect_path = '/concept/single/' . $request->input('concept_id');
@@ -159,30 +142,10 @@ class ConceptController extends Controller
         $definition->definition = $request->input('definition');
         $definition->concept_id = $definition->concept_id;
 
-        if ($request->input('philosopher_new') != '') {
+        $work        = new Work();
+        $philosopher = new Philosopher();
+        $this->store_new_philosopher_work($request, $philosopher, $work, $definition);
 
-            $philosopher       = new Philosopher();
-            $philosopher->name = $request->input('philosopher_new');
-            $philosopher->save();
-            $philosopher_id = $philosopher->id;
-        } else {
-            $philosopher_id = $request->input('philosopher');
-
-            if ($request->input('philosopher') == '') {
-                //TODO pass message: Either choose a philosopher or enter a new one
-            }
-        }
-        $definition->philosopher_id = $philosopher_id;
-
-        if ($request->input('work_new') != '') {
-            $work                 = new Work();
-            $work->title          = $request->input('work_new');
-            $work->philosopher_id = $philosopher_id;
-            $work->save();
-            $definition->work_id = $work->id;
-        } else {
-            $definition->work_id = $request->input('work');
-        }
         $definition->save();
 
         $redirect_path = '/concept/single/' . $definition->concept_id;
