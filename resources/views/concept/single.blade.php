@@ -61,7 +61,7 @@
             <!-- TODO pass the value of $selected_concept->id so that it is available to the form and can be passed as a hidden input from there -->
             <div class="row">
                 <hr>
-                <p><a class="btn btn-primary btn-sm" href="/concept/create_definition" role="button">Create a new
+                <p><a class="btn btn-primary btn-sm" href="/concept/create_definition/{{$selected_concept->id}}" role="button">Create a new
                         definition</a></p>
             </div>
         </div>

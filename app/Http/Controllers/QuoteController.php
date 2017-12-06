@@ -120,6 +120,8 @@ class QuoteController extends Controller
         $quote->quote    = $request->input('quote');
         $quote->language = $request->input('language');
 
+
+
         if ($request->input('philosopher_new') != '') {
 
             $philosopher       = new Philosopher();
@@ -144,6 +146,7 @@ class QuoteController extends Controller
         } else {
             $quote->work_id = $request->input('work');
         }
+
         $quote->save();
 
         return redirect('/quote/all')->with('alert', 'The quote was edited.');
