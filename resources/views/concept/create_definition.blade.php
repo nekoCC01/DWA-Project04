@@ -31,6 +31,8 @@
                     'entry' => 'none'
                 ])
 
+                @include('modules.error-field', ['fieldName' => 'philosopher_new'])
+
                 @include('form.new-philosopher-work')
 
                 <input type="hidden" name="concept_id" value="{{$concept_id}}">

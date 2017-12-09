@@ -54,6 +54,14 @@ class ArgumentController extends Controller
 
     public function store(Request $request)
     {
+
+        $this->validate($request,[
+            'title' => 'required',
+            'assumption' => 'required',
+            'conclusion' => 'required',
+            'philosopher_new' => 'required_without:philosopher'
+        ]);
+
         $argument             = new Argument();
         $argument->title      = $request->input('title');
         $argument->assumption = $request->input('assumption');
@@ -84,6 +92,14 @@ class ArgumentController extends Controller
 
     public function update(Request $request, $argument_id)
     {
+
+        $this->validate($request,[
+            'title' => 'required',
+            'assumption' => 'required',
+            'conclusion' => 'required',
+            'philosopher_new' => 'required_without:philosopher'
+        ]);
+
         $argument             = Argument::find($argument_id);
         $argument->title      = $request->input('title');
         $argument->assumption = $request->input('assumption');

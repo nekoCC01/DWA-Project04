@@ -24,7 +24,7 @@
                 <div class="form-group">
                     <label for="quote">* Quote: </label>
                     <textarea class="form-control" name="quote" id="quote" rows="3">{{ old('quote', $quote->quote) }}</textarea>
-                    @include('modules.error-field', ['fieldName' => 'title'])
+                    @include('modules.error-field', ['fieldName' => 'quote'])
                 </div>
 
 

@@ -23,11 +23,14 @@
                 <div class="form-group">
                     <label for="definition">* Definition:</label>
                     <textarea class="form-control" name="definition" id="definition" rows="3">{{ old('definition', $definition->definition) }}</textarea>
+                    @include('modules.error-field', ['fieldName' => 'definition'])
                 </div>
 
                 @include('form.pulldown-philosopher-work', [
                     'entry' => $definition
                 ])
+
+                @include('modules.error-field', ['fieldName' => 'philosopher_new'])
 
                 @include('form.new-philosopher-work')
 

@@ -107,6 +107,11 @@ class QuoteController extends Controller
 
     public function update(Request $request, $quote_id)
     {
+        $this->validate($request,[
+            'quote' => 'required',
+            'philosopher_new' => 'required_without:philosopher'
+        ]);
+
         $quote           = Quote::find($quote_id);
         $quote->quote    = $request->input('quote');
         $quote->language = $request->input('language');

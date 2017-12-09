@@ -25,6 +25,7 @@
                             <input type='text' class='form-control' name='concept' id='concept'
                                    value='{{ old('concept', $selected_concept->concept) }}'>
                         </div>
+                        @include('modules.error-field', ['fieldName' => 'concept'])
                         <button type="submit" class="btn btn-primary">Save Concept</button>
                     </form>
                 @else

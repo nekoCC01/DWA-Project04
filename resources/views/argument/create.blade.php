@@ -37,11 +37,14 @@
                 <div class="form-group">
                     <label for="conclusion">* Conclusion:</label>
                     <textarea class="form-control" name="conclusion" id="conclusion" rows="3">{{ old('conclusion'),'' }}</textarea>
+                    @include('modules.error-field', ['fieldName' => 'conclusion'])
                 </div>
 
                 @include('form.pulldown-philosopher-work', [
                     'entry' => 'none'
                 ])
+
+                @include('modules.error-field', ['fieldName' => 'philosopher_new'])
 
                 @include('form.new-philosopher-work')
 

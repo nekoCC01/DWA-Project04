@@ -58,6 +58,10 @@ class ConceptController extends Controller
     public function store(Request $request)
     {
 
+        $this->validate($request,[
+            'concept' => 'required'
+        ]);
+
         $concept          = new Concept();
         $concept->concept = $request->input('concept');
 
@@ -81,6 +85,11 @@ class ConceptController extends Controller
 
     public function store_definition(Request $request)
     {
+
+        $this->validate($request,[
+            'definition' => 'required',
+            'philosopher_new' => 'required_without:philosopher'
+        ]);
 
         $definition             = new Definition();
         $definition->definition = $request->input('definition');
@@ -116,6 +125,11 @@ class ConceptController extends Controller
 
     public function update(Request $request, $concept_id)
     {
+
+        $this->validate($request,[
+            'concept' => 'required'
+        ]);
+
         $concept          = Concept::find($concept_id);
         $concept->concept = $request->input('concept');
 
@@ -142,6 +156,10 @@ class ConceptController extends Controller
 
     public function update_definition(Request $request, $definition_id)
     {
+        $this->validate($request,[
+            'definition' => 'required',
+            'philosopher_new' => 'required_without:philosopher'
+        ]);
 
         $definition             = Definition::find($definition_id);
         $definition->definition = $request->input('definition');
