@@ -159,12 +159,31 @@ class ArgumentController extends Controller
         return redirect($redirect_path)->with('alert', 'The quote has been added.');
     }
 
+
     public function delete($argument_id)
     {
-        Argument::find($argument_id)->delete();
+        $argument = Argument::find($argument_id);
 
+        return view('/argument/delete')->with([
+            'argument' => $argument,
+            'previousUrl' => url()->previous() == url()->current() ? '/argument/all' : url()->previous()
+        ]);
+
+    }
+
+    public function destroy($argument_id)
+    {
+        $argument = Argument::find($argument_id);
+        $argument->quotes()->detach();
+        $argument->concepts()->detach();
+        $argument->delete();
+
+
+        /*
         DB::table('argument_quote')->where('argument_id', $argument_id)->delete();
         DB::table('argument_concept')->where('argument_id', $argument_id)->delete();
+
+        */
 
         return redirect('/argument/all')->with('alert', 'The argument has been deleted.');
 

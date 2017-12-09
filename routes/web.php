@@ -57,6 +57,7 @@ Route::get('/quote/all', 'QuoteController@all');
 Route::get('/quote/single/{quote_id}', 'QuoteController@single');
 # Delete a quote
 Route::get('/quote/delete/{quote_id}', 'QuoteController@delete');
+Route::delete('/quote/destroy/{quote_id}', 'QuoteController@destroy');
 /*
  * Bulding relations
  */
@@ -91,8 +92,10 @@ Route::get('/concept/all', 'ConceptController@all');
 Route::get('/concept/single/{concept_id}', 'ConceptController@single');
 # Delete a concept
 Route::get('/concept/delete/{concept_id}', 'ConceptController@delete');
+Route::delete('/concept/destroy/{concept_id}', 'ConceptController@destroy');
 # Delete a definition
 Route::get('/concept/delete_definition/{concept_id}/{definition_id}', 'ConceptController@delete_definition');
+Route::delete('/concept/destroy_definition/{concept_id}/{definition_id}', 'ConceptController@destroy_definition');
 /*
  * Bulding relations
  */
@@ -120,6 +123,7 @@ Route::get('/argument/all', 'ArgumentController@all');
 Route::get('/argument/single/{argument_id}', 'ArgumentController@single');
 # Delete a argument
 Route::get('/argument/delete/{argument_id}', 'ArgumentController@delete');
+Route::delete('/argument/destroy/{argument_id}', 'ArgumentController@destroy');
 /*
  * Bulding relations
  */

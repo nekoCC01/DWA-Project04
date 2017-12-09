@@ -223,19 +223,45 @@ class ConceptController extends Controller
         return redirect($redirect_path)->with('alert', 'The argument has been added.');
     }
 
+
     public function delete($concept_id)
     {
-        Definition::where('concept_id', $concept_id)->delete();
-        Concept::find($concept_id)->delete();
+        $concept = Concept::find($concept_id);
 
-        DB::table('concept_quote')->where('concept_id', $concept_id)->delete();
-        DB::table('argument_concept')->where('concept_id', $concept_id)->delete();
+        return view('/concept/delete')->with([
+            'concept' => $concept,
+            'previousUrl' => url()->previous() == url()->current() ? '/concept/all' : url()->previous()
+        ]);
+
+    }
+
+    public function destroy($concept_id)
+    {
+        Definition::where('concept_id', $concept_id)->delete();
+
+        $concept = Concept::find($concept_id);
+        $concept->quotes()->detach();
+        $concept->arguments()->detach();
+        $concept->delete();
 
         return redirect('/concept/all')->with('alert', 'The concept has been deleted.');
 
     }
 
     public function delete_definition($concept_id, $definition_id)
+    {
+        $concept = Concept::find($concept_id);
+        $definition = Definition::find($definition_id);
+
+        return view('/concept/delete_definition')->with([
+            'concept' => $concept,
+            'definition' => $definition,
+            'previousUrl' => url()->previous() == url()->current() ? '/concept/all' : url()->previous()
+        ]);
+
+    }
+
+    public function destroy_definition($concept_id, $definition_id)
     {
         $definition = Definition::find($definition_id);
         $definition->delete();

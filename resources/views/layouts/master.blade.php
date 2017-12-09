@@ -11,7 +11,7 @@
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="/css/styles.css" type='text/css' rel='stylesheet'>
 
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display%7CRaleway" rel="stylesheet">
 
     @stack('head')
 
@@ -21,6 +21,11 @@
 @if(session('alert'))
     <div class='alert'>
         {{ session('alert') }}
+    </div>
+@endif
+@if(session('alert-delete'))
+    <div class='alert-delete'>
+        {{ session('alert-delete') }}
     </div>
 @endif
 <header>

@@ -24,7 +24,7 @@
                 <div class="form-group">
                     <label for="quote">* Quote: </label>
                     <textarea class="form-control" name="quote" id="quote" rows="3">{{ old('quote', '') }}</textarea>
-                    @include('modules.error-field', ['fieldName' => 'title'])
+                    @include('modules.error-field', ['fieldName' => 'quote'])
                 </div>
 
                 @include('form.check-language', [
@@ -34,6 +34,8 @@
                 @include('form.pulldown-philosopher-work', [
                     'entry' => 'none'
                 ])
+
+                @include('modules.error-field', ['fieldName' => 'philosopher_new'])
 
                 @include('form.new-philosopher-work')
 

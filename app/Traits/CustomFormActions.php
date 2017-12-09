@@ -12,10 +12,6 @@ trait CustomFormActions
             $philosopher_id = $philosopher->id;
         } else {
             $philosopher_id = $request->input('philosopher');
-
-            if ($request->input('philosopher') == '') {
-                //TODO pass message: Either choose a philosopher or enter a new one
-            }
         }
         $entry->philosopher_id = $philosopher_id;
 

@@ -19,8 +19,13 @@
 @endsection
 
 @section('content')
-    <div class="container all_content">
 
+    @isset($alert_delete)
+TEST CONTENT
+    @endisset
+
+
+    <div class="container all_content">
 
         <div class="row">
             <p><a class="btn btn-primary btn-sm" href="/quote/create" role="button">Add new quote</a></p>

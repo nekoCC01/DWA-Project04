@@ -13,7 +13,6 @@ use App\Traits\CustomFormActions;
 
 class QuoteController extends Controller
 {
-
     use CustomFormActions;
 
     public function all()
@@ -58,6 +57,12 @@ class QuoteController extends Controller
         $philosophers = Philosopher::all();
         $works        = Work::all();
 
+        if (!empty($errors))
+        {
+            dump($errors);
+        }
+
+
         return view('quote.create')->with([
             'philosophers' => $philosophers,
             'works'        => $works
@@ -67,6 +72,10 @@ class QuoteController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'quote' => 'required',
+            'philosopher_new' => 'required_without:philosopher'
+        ]);
 
         $quote           = new Quote();
         $quote->quote    = $request->input('quote');
@@ -175,10 +184,22 @@ class QuoteController extends Controller
 
     public function delete($quote_id)
     {
-        Quote::find($quote_id)->delete();
+        $quote = Quote::find($quote_id);
 
-        DB::table('argument_quote')->where('quote_id', $quote_id)->delete();
-        DB::table('concept_quote')->where('quote_id', $quote_id)->delete();
+        return view('/quote/delete')->with([
+            'quote' => $quote,
+            'previousUrl' => url()->previous() == url()->current() ? '/quote/all' : url()->previous()
+        ]);
+
+    }
+
+    public function destroy($quote_id)
+    {
+        $quote = Quote::find($quote_id);
+
+        $quote->arguments()->detach();
+        $quote->concepts()->detach();
+        $quote->delete();
 
         return redirect('/quote/all')->with('alert', 'The quote has been deleted.');
 
@@ -195,6 +216,5 @@ class QuoteController extends Controller
 
         return redirect($redirect_path)->with('alert', $message);
     }
-
 
 }
