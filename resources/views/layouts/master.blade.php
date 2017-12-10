@@ -61,7 +61,7 @@
 </header>
 
 
-<main role="main">
+<main>
 
     <div class="jumbotron">
         <div class="container">
@@ -76,7 +76,7 @@
 </main>
 
 <footer>
-    &copy; {{ date('Y') }}
+    &copy; {{ date('Y') }} Daniel Kasai
 </footer>
 
 <script

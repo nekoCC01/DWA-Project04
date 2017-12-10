@@ -32,6 +32,8 @@
                     'entry' => $quote
                 ])
 
+                @include('modules.error-field', ['fieldName' => 'philosopher_new'])
+
                 @include('form.pulldown-philosopher-work', [
                     'entry' => $quote
                 ])
@@ -52,7 +54,7 @@
 
 
 @push('body')
-    <script type="text/javascript">
+    <script>
 
         $(document).ready(function () {
             $("#philosopher_work_input").hide();

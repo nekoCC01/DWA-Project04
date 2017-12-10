@@ -15,6 +15,7 @@ class QuoteController extends Controller
 {
     use CustomFormActions;
 
+    //Show all quotes
     public function all()
     {
 
@@ -28,6 +29,7 @@ class QuoteController extends Controller
 
     }
 
+    //Home Screen, with random quote
     public function welcome()
     {
         $quotes       = Quote::all();
@@ -38,6 +40,7 @@ class QuoteController extends Controller
         ]);
     }
 
+    //Detail view for a single quote
     public function single($quote_id)
     {
         $selected_quote = Quote::find($quote_id);
@@ -52,6 +55,7 @@ class QuoteController extends Controller
         ]);
     }
 
+    //Create a new quote
     public function create()
     {
         $philosophers = Philosopher::all();
@@ -70,10 +74,11 @@ class QuoteController extends Controller
 
     }
 
+    //Store the new quote
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'quote' => 'required',
+        $this->validate($request, [
+            'quote'           => 'required',
             'philosopher_new' => 'required_without:philosopher'
         ]);
 
@@ -90,6 +95,7 @@ class QuoteController extends Controller
         return redirect('/quote/all')->with('alert', 'The quote was added.');
     }
 
+    //Edit a quote
     public function edit($quote_id)
     {
         $quote = Quote::find($quote_id);
@@ -105,6 +111,7 @@ class QuoteController extends Controller
 
     }
 
+    //Update the quote edited
     public function update(Request $request, $quote_id)
     {
         $this->validate($request,[
@@ -126,7 +133,7 @@ class QuoteController extends Controller
         return redirect('/quote/all')->with('alert', 'The quote was edited.');
     }
 
-
+    //Add a concept to the quote (appears under "Related concepts" in the Single view)
     public function add_concept($quote_id)
     {
         $selected_quote = Quote::find($quote_id);
@@ -144,6 +151,7 @@ class QuoteController extends Controller
         ]);
     }
 
+    //Store the added concept
     public function store_concept(Request $request, $quote_id)
     {
         DB::table('concept_quote')->insert([
@@ -157,6 +165,7 @@ class QuoteController extends Controller
 
     }
 
+    //Add an argument to the quote (appears under "Related arguments" in the Single view)
     public function add_argument($quote_id)
     {
         $selected_quote = Quote::find($quote_id);
@@ -175,6 +184,7 @@ class QuoteController extends Controller
 
     }
 
+    //Store the argument
     public function store_argument(Request $request, $quote_id)
     {
         DB::table('argument_quote')->insert([
@@ -187,6 +197,7 @@ class QuoteController extends Controller
         return redirect($redirect_path)->with('alert', 'The argument has been added.');
     }
 
+    //Delete a quote --> return a confirmation view
     public function delete($quote_id)
     {
         $quote = Quote::find($quote_id);
@@ -198,6 +209,7 @@ class QuoteController extends Controller
 
     }
 
+    //delete the quote in the DB, with all its relations
     public function destroy($quote_id)
     {
         $quote = Quote::find($quote_id);
@@ -210,6 +222,7 @@ class QuoteController extends Controller
 
     }
 
+    //unlink a related concept or argument
     public function unlink($type, $quote_id, $related_id)
     {
         $table                = $type . "_quote";

@@ -49,7 +49,7 @@
 
 
 @push('body')
-    <script type="text/javascript">
+    <script>
 
         $(document).ready(function () {
             $("#philosopher_work_input").hide();

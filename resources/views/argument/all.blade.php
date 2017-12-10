@@ -62,7 +62,7 @@
 
 
 @push('body')
-    <script type="text/javascript">
+    <script>
         $('.nav-item').removeClass('active');
         $('#arguments').addClass('active');
     </script>

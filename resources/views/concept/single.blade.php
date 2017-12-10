@@ -194,7 +194,7 @@
 @endsection
 
 @push('body')
-    <script type="text/javascript">
+    <script>
         $('.nav-item').removeClass('active');
         $('#concepts').addClass('active');
     </script>

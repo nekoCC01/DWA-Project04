@@ -137,7 +137,7 @@
 
 
 @push('body')
-    <script type="text/javascript">
+    <script>
         $('.nav-item').removeClass('active');
         $('#quotes').addClass('active');
     </script>
