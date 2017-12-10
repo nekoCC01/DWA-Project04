@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Quote all
+    Argument all
 @endsection
 
 @section('current_position')

@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Quote all
+    Concept all
 @endsection
 
 @section('current_position')
