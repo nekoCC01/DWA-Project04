@@ -21,7 +21,7 @@
 @section('content')
 
     @isset($alert_delete)
-TEST CONTENT
+        TEST CONTENT
     @endisset
 
 

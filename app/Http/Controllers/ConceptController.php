@@ -17,6 +17,7 @@ class ConceptController extends Controller
 
     use CustomFormActions;
 
+    //show all concepts
     public function all()
     {
         $concepts = Concept::all();
@@ -28,6 +29,7 @@ class ConceptController extends Controller
         ]);
     }
 
+    //show a single concept, with its definitions
     public function single($concept_id)
     {
         $selected_concept = Concept::find($concept_id);
@@ -44,6 +46,7 @@ class ConceptController extends Controller
         ]);
     }
 
+    //create new concept --> additional form in all-page
     public function create()
     {
         $concepts = Concept::all();
@@ -55,10 +58,11 @@ class ConceptController extends Controller
         ]);
     }
 
+    //store concept
     public function store(Request $request)
     {
 
-        $this->validate($request,[
+        $this->validate($request, [
             'concept' => 'required'
         ]);
 
@@ -70,6 +74,7 @@ class ConceptController extends Controller
         return redirect('/concept/all')->with('alert', 'The concept was added.');
     }
 
+    //create new definition for a concept (from single view)
     public function create_definition($concept_id)
     {
         $philosophers = Philosopher::all();
@@ -83,11 +88,12 @@ class ConceptController extends Controller
 
     }
 
+    //store definition
     public function store_definition(Request $request)
     {
 
-        $this->validate($request,[
-            'definition' => 'required',
+        $this->validate($request, [
+            'definition'      => 'required',
             'philosopher_new' => 'required_without:philosopher'
         ]);
 
@@ -107,6 +113,7 @@ class ConceptController extends Controller
     }
 
 
+    //edit a concept
     public function edit($concept_id)
     {
         $selected_concept = Concept::find($concept_id);
@@ -123,10 +130,11 @@ class ConceptController extends Controller
 
     }
 
+    //update a concept
     public function update(Request $request, $concept_id)
     {
 
-        $this->validate($request,[
+        $this->validate($request, [
             'concept' => 'required'
         ]);
 
@@ -140,6 +148,7 @@ class ConceptController extends Controller
         return redirect($redirect_path)->with('alert', 'The concept was edited.');
     }
 
+    //edit definition
     public function edit_definition($definition_id)
     {
         $definition = Definition::find($definition_id);
@@ -154,10 +163,11 @@ class ConceptController extends Controller
         ]);
     }
 
+    //update definition
     public function update_definition(Request $request, $definition_id)
     {
-        $this->validate($request,[
-            'definition' => 'required',
+        $this->validate($request, [
+            'definition'      => 'required',
             'philosopher_new' => 'required_without:philosopher'
         ]);
 
@@ -177,6 +187,7 @@ class ConceptController extends Controller
 
     }
 
+    //add related quote
     public function add_quote($concept_id)
     {
 
@@ -197,6 +208,7 @@ class ConceptController extends Controller
         ]);
     }
 
+    //store quote
     public function store_quote(Request $request, $concept_id)
     {
         DB::table('concept_quote')->insert([
@@ -209,6 +221,7 @@ class ConceptController extends Controller
         return redirect($redirect_path)->with('alert', 'The concept has been added.');
     }
 
+    //add related argument
     public function add_argument($concept_id)
     {
 
@@ -229,6 +242,7 @@ class ConceptController extends Controller
         ]);
     }
 
+    //store argument
     public function store_argument(Request $request, $concept_id)
     {
         DB::table('argument_concept')->insert([
@@ -242,17 +256,19 @@ class ConceptController extends Controller
     }
 
 
+    //delete concept --> confirmation page
     public function delete($concept_id)
     {
         $concept = Concept::find($concept_id);
 
         return view('/concept/delete')->with([
-            'concept' => $concept,
+            'concept'     => $concept,
             'previousUrl' => url()->previous() == url()->current() ? '/concept/all' : url()->previous()
         ]);
 
     }
 
+    //final delete,, with all definitions, and all related quotes and arguments (pivot tables)
     public function destroy($concept_id)
     {
         Definition::where('concept_id', $concept_id)->delete();
@@ -266,19 +282,21 @@ class ConceptController extends Controller
 
     }
 
+    //delete a definition
     public function delete_definition($concept_id, $definition_id)
     {
-        $concept = Concept::find($concept_id);
+        $concept    = Concept::find($concept_id);
         $definition = Definition::find($definition_id);
 
         return view('/concept/delete_definition')->with([
-            'concept' => $concept,
-            'definition' => $definition,
+            'concept'     => $concept,
+            'definition'  => $definition,
             'previousUrl' => url()->previous() == url()->current() ? '/concept/all' : url()->previous()
         ]);
 
     }
 
+    //final delete of definition
     public function destroy_definition($concept_id, $definition_id)
     {
         $definition = Definition::find($definition_id);
@@ -290,6 +308,7 @@ class ConceptController extends Controller
 
     }
 
+    //unlink related entries
     public function unlink($type, $concept_id, $related_id)
     {
 

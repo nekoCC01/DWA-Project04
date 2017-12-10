@@ -13,7 +13,6 @@
 @section('featured_content')
 
 
-
     <div class="old_paper">
         <div class="row">
             <h2>{{$selected_argument->title}}</h2>

@@ -23,7 +23,8 @@
 
                 <div class="form-group">
                     <label for="quote">* Quote: </label>
-                    <textarea class="form-control" name="quote" id="quote" rows="3">{{ old('quote', $quote->quote) }}</textarea>
+                    <textarea class="form-control" name="quote" id="quote"
+                              rows="3">{{ old('quote', $quote->quote) }}</textarea>
                     @include('modules.error-field', ['fieldName' => 'quote'])
                 </div>
 
@@ -32,11 +33,11 @@
                     'entry' => $quote
                 ])
 
-                @include('modules.error-field', ['fieldName' => 'philosopher_new'])
-
                 @include('form.pulldown-philosopher-work', [
                     'entry' => $quote
                 ])
+
+                @include('modules.error-field', ['fieldName' => 'philosopher_new'])
 
                 @include('form.new-philosopher-work')
 
@@ -51,24 +52,6 @@
 @endsection
 
 
-
-
 @push('body')
-    <script>
-
-        $(document).ready(function () {
-            $("#philosopher_work_input").hide();
-            $("input[name='want']").click(function () {
-                displayPhilosopherWorkInput();
-            });
-        });
-
-        function displayPhilosopherWorkInput() {
-            if ($("input[name='want']:checked").val() == 'yes') {
-                $('#philosopher_work_input').fadeIn('slow');
-            } else {
-                $('#philosopher_work_input').fadeOut('slow');
-            }
-        }
-    </script>
+    <script src="/js/DisplayPhilosopherWorkInput.js"></script>
 @endpush

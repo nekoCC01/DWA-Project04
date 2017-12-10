@@ -17,16 +17,16 @@ class CreateDefinitionsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->text('definition');
-	        $table->integer('concept_id')->unsigned();
-	        $table->integer('philosopher_id')->unsigned();
-	        $table->integer('work_id')->unsigned()->nullable();
+            $table->integer('concept_id')->unsigned();
+            $table->integer('philosopher_id')->unsigned();
+            $table->integer('work_id')->unsigned()->nullable();
         });
 
-	    Schema::table('definitions', function(Blueprint $table){
-		    $table->foreign('concept_id')->references('id')->on('concepts');
-		    $table->foreign('philosopher_id')->references('id')->on('philosophers');
-		    $table->foreign('work_id')->references('id')->on('works');
-	    });
+        Schema::table('definitions', function (Blueprint $table) {
+            $table->foreign('concept_id')->references('id')->on('concepts');
+            $table->foreign('philosopher_id')->references('id')->on('philosophers');
+            $table->foreign('work_id')->references('id')->on('works');
+        });
     }
 
     /**

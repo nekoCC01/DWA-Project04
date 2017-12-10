@@ -14,13 +14,13 @@ class CreateConceptQuoteTable extends Migration
     public function up()
     {
         Schema::create('concept_quote', function (Blueprint $table) {
-	        $table->integer('concept_id')->unsigned();
-	        $table->integer('quote_id')->unsigned();
+            $table->integer('concept_id')->unsigned();
+            $table->integer('quote_id')->unsigned();
         });
-	    Schema::table('concept_quote', function (Blueprint $table) {
-		    $table->foreign('concept_id')->references('id')->on('concepts')->onDelete('cascade');
-		    $table->foreign('quote_id')->references('id')->on('quotes')->onDelete('cascade');
-	    });
+        Schema::table('concept_quote', function (Blueprint $table) {
+            $table->foreign('concept_id')->references('id')->on('concepts')->onDelete('cascade');
+            $table->foreign('quote_id')->references('id')->on('quotes')->onDelete('cascade');
+        });
     }
 
     /**

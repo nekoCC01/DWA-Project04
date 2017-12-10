@@ -18,43 +18,38 @@
             <hr>
         </div>
 
+        @foreach ($arguments as $argument)
 
-            @foreach ($arguments as $argument)
+            <div class="row">
+                <h3>{{$argument->title}}</h3>
+            </div>
+            <div class="row">
 
+                @include('modules.blogquote', [
+                        'content' => $argument->assumption . " -> " . $argument->conclusion,
+                        'attribution' => $argument->philosopher->name
+                    ])
 
+            </div>
+            <div class="row">
+                <br>
+                <a href="/argument/single/{{$argument->id}}" class="icon">
+                    <img src="/img/view-icon.svg" alt="">
+                    View
+                </a>
+                <a href="/argument/edit/{{$argument->id}}" class="icon">
+                    <img src="/img/edit-icon.svg" alt="">
+                    Edit
+                </a>
+                <a href="/argument/delete/{{$argument->id}}" class="icon">
+                    <img src="/img/delete-icon.svg" alt="">
+                    Delete
+                </a>
+                <hr>
+            </div>
 
+        @endforeach
 
-
-                <div class="row">
-                    <h3>{{$argument->title}}</h3>
-                </div>
-                <div class="row">
-
-                    @include('modules.blogquote', [
-                            'content' => $argument->assumption . " -> " . $argument->conclusion,
-                            'attribution' => $argument->philosopher->name
-                        ])
-
-                </div>
-                <div class="row">
-                    <br>
-                    <a href="/argument/single/{{$argument->id}}" class="icon">
-                        <img src="/img/view-icon.svg" alt="">
-                        View
-                    </a>
-                    <a href="/argument/edit/{{$argument->id}}" class="icon">
-                        <img src="/img/edit-icon.svg" alt="">
-                        Edit
-                    </a>
-                    <a href="/argument/delete/{{$argument->id}}" class="icon">
-                        <img src="/img/delete-icon.svg" alt="">
-                        Delete
-                    </a>
-                    <hr>
-                </div>
-
-            @endforeach
-        
 
     </div>
 

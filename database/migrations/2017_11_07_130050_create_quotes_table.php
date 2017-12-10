@@ -18,13 +18,13 @@ class CreateQuotesTable extends Migration
             $table->timestamps();
             $table->text('quote');
             $table->string('language');
-	        $table->integer('philosopher_id')->unsigned();
-	        $table->integer('work_id')->unsigned()->nullable();
+            $table->integer('philosopher_id')->unsigned();
+            $table->integer('work_id')->unsigned()->nullable();
         });
 
-        Schema::table('quotes', function(Blueprint $table){
-	        $table->foreign('philosopher_id')->references('id')->on('philosophers');
-	        $table->foreign('work_id')->references('id')->on('works');
+        Schema::table('quotes', function (Blueprint $table) {
+            $table->foreign('philosopher_id')->references('id')->on('philosophers');
+            $table->foreign('work_id')->references('id')->on('works');
         });
     }
 

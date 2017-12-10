@@ -16,6 +16,7 @@ class ArgumentController extends Controller
 
     use CustomFormActions;
 
+    //Show all arguments
     public function all()
     {
 
@@ -26,6 +27,7 @@ class ArgumentController extends Controller
         ]);
     }
 
+    //Show a single argument
     public function single($argument_id)
     {
         $selected_argument = Argument::find($argument_id);
@@ -40,6 +42,7 @@ class ArgumentController extends Controller
         ]);
     }
 
+    //create a new argument
     public function create()
     {
         $philosophers = Philosopher::all();
@@ -52,13 +55,14 @@ class ArgumentController extends Controller
 
     }
 
+    //store the newly created argument
     public function store(Request $request)
     {
 
-        $this->validate($request,[
-            'title' => 'required',
-            'assumption' => 'required',
-            'conclusion' => 'required',
+        $this->validate($request, [
+            'title'           => 'required',
+            'assumption'      => 'required',
+            'conclusion'      => 'required',
             'philosopher_new' => 'required_without:philosopher'
         ]);
 
@@ -76,6 +80,7 @@ class ArgumentController extends Controller
         return redirect('/argument/all')->with('alert', 'The argument was added.');
     }
 
+    //edit an argument
     public function edit($argument_id)
     {
         $argument = Argument::find($argument_id);
@@ -90,13 +95,14 @@ class ArgumentController extends Controller
         ]);
     }
 
+    //update the edited argument
     public function update(Request $request, $argument_id)
     {
 
-        $this->validate($request,[
-            'title' => 'required',
-            'assumption' => 'required',
-            'conclusion' => 'required',
+        $this->validate($request, [
+            'title'           => 'required',
+            'assumption'      => 'required',
+            'conclusion'      => 'required',
             'philosopher_new' => 'required_without:philosopher'
         ]);
 
@@ -115,6 +121,7 @@ class ArgumentController extends Controller
 
     }
 
+    //add a related concept
     public function add_concept($argument_id)
     {
         $selected_argument = Argument::find($argument_id);
@@ -132,6 +139,7 @@ class ArgumentController extends Controller
         ]);
     }
 
+    //store the concept
     public function store_concept(Request $request, $argument_id)
     {
         DB::table('argument_concept')->insert([
@@ -145,6 +153,7 @@ class ArgumentController extends Controller
 
     }
 
+    //add a related quote
     public function add_quote($argument_id)
     {
 
@@ -163,6 +172,7 @@ class ArgumentController extends Controller
         ]);
     }
 
+    //store the quote
     public function store_quote(Request $request, $argument_id)
     {
         DB::table('argument_quote')->insert([
@@ -176,17 +186,19 @@ class ArgumentController extends Controller
     }
 
 
+    //delete an argument --> confirmation page
     public function delete($argument_id)
     {
         $argument = Argument::find($argument_id);
 
         return view('/argument/delete')->with([
-            'argument' => $argument,
+            'argument'    => $argument,
             'previousUrl' => url()->previous() == url()->current() ? '/argument/all' : url()->previous()
         ]);
 
     }
 
+    //final delete, with all related concepts and quotes
     public function destroy($argument_id)
     {
         $argument = Argument::find($argument_id);
@@ -194,17 +206,11 @@ class ArgumentController extends Controller
         $argument->concepts()->detach();
         $argument->delete();
 
-
-        /*
-        DB::table('argument_quote')->where('argument_id', $argument_id)->delete();
-        DB::table('argument_concept')->where('argument_id', $argument_id)->delete();
-
-        */
-
         return redirect('/argument/all')->with('alert', 'The argument has been deleted.');
 
     }
 
+    //unlink related concepts or quotes
     public function unlink($type, $argument_id, $related_id)
     {
         $table                = "argument_" . $type;

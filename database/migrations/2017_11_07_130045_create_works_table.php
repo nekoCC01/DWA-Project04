@@ -18,12 +18,12 @@ class CreateWorksTable extends Migration
             $table->timestamps();
             $table->string('title');
             $table->string('wikidata_id')->nullable();
-	        $table->integer('philosopher_id')->unsigned();
+            $table->integer('philosopher_id')->unsigned();
         });
 
-	    Schema::table('works', function(Blueprint $table){
-		    $table->foreign('philosopher_id')->references('id')->on('philosophers');
-	    });
+        Schema::table('works', function (Blueprint $table) {
+            $table->foreign('philosopher_id')->references('id')->on('philosophers');
+        });
 
     }
 

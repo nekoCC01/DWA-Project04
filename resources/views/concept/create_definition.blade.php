@@ -23,7 +23,8 @@
                 <hr>
                 <div class="form-group">
                     <label for="definition">* Definition:</label>
-                    <textarea class="form-control" name="definition" id="definition" rows="3">{{ old('definition','') }}</textarea>
+                    <textarea class="form-control" name="definition" id="definition"
+                              rows="3">{{ old('definition','') }}</textarea>
                     @include('modules.error-field', ['fieldName' => 'definition'])
                 </div>
 
@@ -46,24 +47,6 @@
 @endsection
 
 
-
-
 @push('body')
-    <script>
-
-        $(document).ready(function () {
-            $("#philosopher_work_input").hide();
-            $("input[name='want']").click(function () {
-                displayPhilosopherWorkInput();
-            });
-        });
-
-        function displayPhilosopherWorkInput() {
-            if ($("input[name='want']:checked").val() == 'yes') {
-                $('#philosopher_work_input').fadeIn('slow');
-            } else {
-                $('#philosopher_work_input').fadeOut('slow');
-            }
-        }
-    </script>
+    <script src="/js/DisplayPhilosopherWorkInput.js"></script>
 @endpush

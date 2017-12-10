@@ -25,6 +25,7 @@ body {
 basic html elements
  */
 
+/* inspired by https://css-tricks.com/examples/hrs/ */
 hr {
     clear: both;
     display: block;

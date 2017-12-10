@@ -19,14 +19,14 @@ class CreateArgumentsTable extends Migration
             $table->string('title');
             $table->text('assumption');
             $table->text('conclusion');
-	        $table->integer('philosopher_id')->unsigned()->nullable();
-	        $table->integer('work_id')->unsigned()->nullable();
+            $table->integer('philosopher_id')->unsigned()->nullable();
+            $table->integer('work_id')->unsigned()->nullable();
         });
 
-	    Schema::table('arguments', function(Blueprint $table){
-		    $table->foreign('philosopher_id')->references('id')->on('philosophers');
-		    $table->foreign('work_id')->references('id')->on('works');
-	    });
+        Schema::table('arguments', function (Blueprint $table) {
+            $table->foreign('philosopher_id')->references('id')->on('philosophers');
+            $table->foreign('work_id')->references('id')->on('works');
+        });
     }
 
     /**

@@ -17,10 +17,10 @@ class CreateArgumentConceptTable extends Migration
             $table->integer('argument_id')->unsigned();
             $table->integer('concept_id')->unsigned();
         });
-	    Schema::table('argument_concept', function (Blueprint $table) {
-		    $table->foreign('argument_id')->references('id')->on('arguments')->onDelete('cascade');
-		    $table->foreign('concept_id')->references('id')->on('concepts')->onDelete('cascade');
-	    });
+        Schema::table('argument_concept', function (Blueprint $table) {
+            $table->foreign('argument_id')->references('id')->on('arguments')->onDelete('cascade');
+            $table->foreign('concept_id')->references('id')->on('concepts')->onDelete('cascade');
+        });
     }
 
     /**

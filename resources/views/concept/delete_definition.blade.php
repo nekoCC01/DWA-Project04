@@ -15,10 +15,10 @@
             <div class="row">
                 Definition:
                 <ul>
-                        <li>
-                            {{$definition->definition}} <br>
-                            <i>by {{$definition->philosopher->name}}</i>
-                        </li>
+                    <li>
+                        {{$definition->definition}} <br>
+                        <i>by {{$definition->philosopher->name}}</i>
+                    </li>
                 </ul>
             </div>
         </div>

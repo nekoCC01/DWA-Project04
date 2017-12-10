@@ -128,8 +128,6 @@
                             <hr>
                         </div>
 
-
-
                     @endforeach
 
                 </div>

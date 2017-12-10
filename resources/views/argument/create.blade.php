@@ -30,13 +30,15 @@
 
                 <div class="form-group">
                     <label for="assumption">* Assumption:</label>
-                    <textarea class="form-control" name="assumption" id="assumption" rows="3">{{ old('assumption'),'' }}</textarea>
+                    <textarea class="form-control" name="assumption" id="assumption"
+                              rows="3">{{ old('assumption'),'' }}</textarea>
                     @include('modules.error-field', ['fieldName' => 'assumption'])
                 </div>
 
                 <div class="form-group">
                     <label for="conclusion">* Conclusion:</label>
-                    <textarea class="form-control" name="conclusion" id="conclusion" rows="3">{{ old('conclusion'),'' }}</textarea>
+                    <textarea class="form-control" name="conclusion" id="conclusion"
+                              rows="3">{{ old('conclusion'),'' }}</textarea>
                     @include('modules.error-field', ['fieldName' => 'conclusion'])
                 </div>
 
@@ -57,25 +59,6 @@
 
 @endsection
 
-
-
-
 @push('body')
-    <script>
-
-        $(document).ready(function () {
-            $("#philosopher_work_input").hide();
-            $("input[name='want']").click(function () {
-                displayPhilosopherWorkInput();
-            });
-        });
-
-        function displayPhilosopherWorkInput() {
-            if ($("input[name='want']:checked").val() == 'yes') {
-                $('#philosopher_work_input').fadeIn('slow');
-            } else {
-                $('#philosopher_work_input').fadeOut('slow');
-            }
-        }
-    </script>
+    <script src="/js/DisplayPhilosopherWorkInput.js"></script>
 @endpush
