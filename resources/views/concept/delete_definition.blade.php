@@ -32,7 +32,7 @@
 
     <div class="container-fluid welcome">
         <div class="text-center">
-            <h3>Are you sure you want to delete this concept?</h3>
+            <h3>Are you sure you want to delete this definition?</h3>
             <form method='POST' action='/concept/destroy_definition/{{ $concept->id }}/{{$definition->id}}'>
                 {{ method_field('delete') }}
                 {{ csrf_field() }}
