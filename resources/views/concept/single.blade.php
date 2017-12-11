@@ -92,6 +92,7 @@
                                     @endforeach
                                 </select>
                             </div>
+                            @include('modules.error-field', ['fieldName' => 'quote'])
                             <button type="submit" class="btn btn-primary">Add Quote</button>
                         </form>
                         <hr>
@@ -151,6 +152,7 @@
                                     @endforeach
                                 </select>
                             </div>
+                            @include('modules.error-field', ['fieldName' => 'argument'])
                             <button type="submit" class="btn btn-primary">Add Argument</button>
                         </form>
                     @else

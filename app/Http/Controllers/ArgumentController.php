@@ -138,6 +138,10 @@ class ArgumentController extends Controller
     //store the concept
     public function store_concept(Request $request, $argument_id)
     {
+        $this->validate($request, [
+            'concept'           => 'required'
+        ]);
+
         DB::table('argument_concept')->insert([
             'argument_id' => $argument_id,
             'concept_id'  => $request->input('concept')
@@ -170,6 +174,10 @@ class ArgumentController extends Controller
     //store the quote
     public function store_quote(Request $request, $argument_id)
     {
+        $this->validate($request, [
+            'quote'           => 'required'
+        ]);
+
         DB::table('argument_quote')->insert([
             'quote_id'    => $request->input('quote'),
             'argument_id' => $argument_id

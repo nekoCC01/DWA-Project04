@@ -51,6 +51,7 @@
                                 @endforeach
                             </select>
                         </div>
+                        @include('modules.error-field', ['fieldName' => 'concept'])
                         <button type="submit" class="btn btn-primary">Add Concept</button>
                     </form>
                 </div>
@@ -88,6 +89,7 @@
                                 @endforeach
                             </select>
                         </div>
+                        @include('modules.error-field', ['fieldName' => 'argument'])
                         <button type="submit" class="btn btn-primary">Add Argument</button>
                     </form>
                 </div>

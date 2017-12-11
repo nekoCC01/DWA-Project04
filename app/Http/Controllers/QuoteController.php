@@ -153,6 +153,10 @@ class QuoteController extends Controller
     //Store the added concept
     public function store_concept(Request $request, $quote_id)
     {
+        $this->validate($request, [
+            'concept'           => 'required'
+        ]);
+
         DB::table('concept_quote')->insert([
             'quote_id'   => $quote_id,
             'concept_id' => $request->input('concept')
@@ -186,6 +190,10 @@ class QuoteController extends Controller
     //Store the argument
     public function store_argument(Request $request, $quote_id)
     {
+        $this->validate($request, [
+            'argument'           => 'required'
+        ]);
+
         DB::table('argument_quote')->insert([
             'quote_id'    => $quote_id,
             'argument_id' => $request->input('argument')
