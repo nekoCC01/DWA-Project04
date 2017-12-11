@@ -13,13 +13,11 @@ use App\Traits\CustomFormActions;
 
 class ArgumentController extends Controller
 {
-
     use CustomFormActions;
 
     //Show all arguments
     public function all()
     {
-
         $arguments = Argument::all();
 
         return view('argument.all')->with([
@@ -58,7 +56,6 @@ class ArgumentController extends Controller
     //store the newly created argument
     public function store(Request $request)
     {
-
         $this->validate($request, [
             'title'           => 'required',
             'assumption'      => 'required',
@@ -98,7 +95,6 @@ class ArgumentController extends Controller
     //update the edited argument
     public function update(Request $request, $argument_id)
     {
-
         $this->validate($request, [
             'title'           => 'required',
             'assumption'      => 'required',
@@ -156,7 +152,6 @@ class ArgumentController extends Controller
     //add a related quote
     public function add_quote($argument_id)
     {
-
         $selected_argument = Argument::find($argument_id);
 
         $showConceptForm = false;

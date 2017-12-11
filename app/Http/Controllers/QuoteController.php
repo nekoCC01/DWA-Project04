@@ -18,7 +18,6 @@ class QuoteController extends Controller
     //Show all quotes
     public function all()
     {
-
         $quotes       = Quote::all();
         $random_quote = $quotes->random();
 
